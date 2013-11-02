@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Ranomiaer
+class Randomiser
 {
-
     static Random _random = new Random();
 
     static void Main()
