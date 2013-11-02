@@ -66,7 +66,8 @@ Please only enter correct data, it's no fun otherwise...");
         Console.Clear();
         Thread.Sleep(2000);
 
-        Console.WriteLine("Account holder's full name:\t{0} {1} {2}", holderFirstName, holderMiddleName, holderLastName);
+        Console.WriteLine("Account holder's full name:\t{0} {1} {2}", 
+            holderFirstName, holderMiddleName, holderLastName);
         Thread.Sleep(1500);
         Console.WriteLine("Bank, servicing the account:\t{0}", desiredBank);
         Thread.Sleep(1500);
@@ -76,18 +77,31 @@ Please only enter correct data, it's no fun otherwise...");
         Thread.Sleep(2800);
 
         Random rnd = new Random();
-        Console.WriteLine("Your International Bank Account Number: \tBG {0} {1}{2}{3}{4} {5} {6} {7} {8}", rnd.Next(11, 99), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(11, 99));
+        Console.WriteLine("Your International Bank Account Number: \tBG {0} {1}{2}{3}{4} {5} {6} {7} {8}", 
+            rnd.Next(11, 99), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), 
+            (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), rnd.Next(1111, 9999), 
+            rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(11, 99));
 
         Thread.Sleep(2000);
-        Console.WriteLine("Your BIC code:\t\t\t\t\t{0}{1}{2}{3}{4}{5}{6}{7}", (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90));
+
+        Console.WriteLine("Your BIC code:\t\t\t\t\t{0}{1}{2}{3}{4}{5}{6}{7}", (char)rnd.Next(65, 90), 
+            (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), 
+            (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), (char)rnd.Next(65, 90), 
+            (char)rnd.Next(65, 90));
+
         Console.WriteLine();
 
         Thread.Sleep(2000);
-        Console.WriteLine("Associated credit card 1:\t\t\t{0} {1} {2} {3}", rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999));
+
+        Console.WriteLine("Associated credit card 1:\t\t\t{0} {1} {2} {3}", rnd.Next(1111, 9999),
+            rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999));
         Thread.Sleep(1500);                           
-        Console.WriteLine("Associated credit card 2:\t\t\t{0} {1} {2} {3}", rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999));
+        Console.WriteLine("Associated credit card 2:\t\t\t{0} {1} {2} {3}", rnd.Next(1111, 9999),
+            rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999));
         Thread.Sleep(1500);                           
-        Console.WriteLine("Associated credit card 3:\t\t\t{0} {1} {2} {3}", rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999));
+        Console.WriteLine("Associated credit card 3:\t\t\t{0} {1} {2} {3}", rnd.Next(1111, 9999),
+            rnd.Next(1111, 9999), rnd.Next(1111, 9999), rnd.Next(1111, 9999));
+
         Thread.Sleep(2000);
         Console.WriteLine();
     }
