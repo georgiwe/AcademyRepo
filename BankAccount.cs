@@ -61,7 +61,11 @@ Please only enter correct data, it's no fun otherwise...");
 
         Console.WriteLine("Your account has been created!");
         Console.WriteLine();
-        Console.WriteLine("There are 3 (three) credit card numbers, associated with your account.\n\n\n\nPlease press <Enter> to view them and the data you submitted.");
+        Console.WriteLine(@"There are 3 (three) credit card numbers, associated with your account.
+
+
+
+Please press <Enter> to view them and the data you submitted.");
         Console.ReadLine();
         Console.Clear();
         Thread.Sleep(2000);
