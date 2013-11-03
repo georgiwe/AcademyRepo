@@ -13,8 +13,8 @@ class BankAccount
 
 
         Console.CursorVisible = false;
-        Console.WriteLine(@"Welcome to the account creation tool!
-Please only enter correct data, it's no fun otherwise...");
+        Console.WriteLine(
+            "Welcome to the account creation tool!\nPlease only enter correct data, it's no fun otherwise...");
 
         Console.WriteLine();
         Console.WriteLine("Press <Enter> to continue...");
