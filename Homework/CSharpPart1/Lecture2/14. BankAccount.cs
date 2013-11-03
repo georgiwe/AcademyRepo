@@ -8,11 +8,6 @@ class BankAccount
         /* The strict "solution" is commented out in this section.
          * The uncommented code is for fun, run it if you have the time.
          * All variables except the balance are strings, I think it's best.
-         * 
-         * string holderFirstName, holderMiddleName, holderLastName,
-         *   bankName, bicCode, creditCard1, creditCard2, creditCard3;
-         * decimal blance;
-         * 
          */
 
 
