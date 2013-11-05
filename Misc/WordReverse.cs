@@ -40,7 +40,7 @@ class TestArea
 
         for (int i = 0; i < wordCount; i++)
         {
-            if (i == 5) result += strArray[i];
+            if (i == wordCount - 1) result += strArray[i];
             else result += strArray[i] + " ";
         }
 
