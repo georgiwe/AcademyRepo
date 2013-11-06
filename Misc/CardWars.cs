@@ -23,15 +23,11 @@ class CardWars2point0
 
         for (int i = 0; (i < numberOfGames) && (gameOver == false); i++)
         {
-            player1hasDrawnX = false;
-            player2hasDrawnX = false;
-
             int tempPlayer1score = 0;
             int tempPlayer2score = 0;
             byte player1zCardCount = 0;
             byte player2zCardCount = 0;
 
-            // calculate player 1 score 
             for (int j = 0; j < 3; j++)
             {
                 string input = Console.ReadLine();
@@ -49,7 +45,6 @@ class CardWars2point0
                 }
             }
 
-            // calculate player 2 score
             for (int j = 0; j < 3; j++)
             {
                 string input = Console.ReadLine();
@@ -67,6 +62,9 @@ class CardWars2point0
                 }
             }
 
+            if (player1zCardCount > 0) { player1score = player1score * (int)(Math.Pow(2, player1zCardCount)); }
+            if (player2zCardCount > 0) { player2score = player2score * (int)(Math.Pow(2, player2zCardCount)); }
+
             if (tempPlayer1score > tempPlayer2score)
             { player1score += tempPlayer1score; player1gamesWon++;}
             else if (tempPlayer1score < tempPlayer2score)
@@ -83,9 +81,6 @@ class CardWars2point0
                 player1hasDrawnX = false; player2hasDrawnX = false;
             }
 
-            if (player1zCardCount > 0) { player1score = player1score * (int)(Math.Pow(2, player1zCardCount)); }
-            if (player2zCardCount > 0) { player2score = player2score * (int)(Math.Pow(2, player2zCardCount)); }
-
         }
 
         if (player1hasDrawnX == true) 
@@ -93,10 +88,10 @@ class CardWars2point0
         else if (player2hasDrawnX == true)
             Console.WriteLine("X card drawn! Player two wins the match!");
         else if (player1score > player2score)
-        { Console.WriteLine("First player wins!\nScore: {0}\nGames won: {1}", player1score, player1gamesWon); }
+            Console.WriteLine("First player wins!\nScore: {0}\nGames won: {1}", player1score, player1gamesWon);
         else if (player2score > player1score)
-        { Console.WriteLine("Second player wins!\nScore: {0}\nGames won: {1}", player2score, player2gamesWon); }
+            Console.WriteLine("Second player wins!\nScore: {0}\nGames won: {1}", player2score, player2gamesWon);
         else if (player1score == player2score)
-        { Console.WriteLine("It's a tie!\nScore: {0}", player1score); }
+            Console.WriteLine("It's a tie!\nScore: {0}", player1score); 
     }
 }
