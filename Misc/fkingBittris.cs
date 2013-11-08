@@ -60,7 +60,7 @@ class Bittris2
                 {
                     switch (commands[i][j])
                     {
-                        case 'L': // doesnt go out of the playfield          doesnt hit into other landed pieces
+                        case 'L': // doesnt go out of the playfield          doesnt hit other landed pieces
                             if (((numbers[i] & 128) == 0) && (((numbers[i] << 1) & (screen[j] & (~numbers[i]))) == 0))
                             {                                                                 // virtually removes the piece 
                                 numbers[i] = numbers[i] << 1;                                 // from the current "screen row"  
