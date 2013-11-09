@@ -3,8 +3,7 @@ using System;
 class Bittris2
 {
     static void Main()
-    {
-        // input
+    {   // input
         int n = int.Parse(Console.ReadLine());
         int[] numbers = new int[n / 4];
         string[] commands = new string[(n / 4)];
@@ -58,18 +57,16 @@ class Bittris2
 
                 for (int j = 0; (j < 3) && (landed == false); j++)
                 {
-                    switch (commands[i][j])
-                    {
-                        case 'L': // doesnt go out of the playfield          doesnt hit other landed pieces
-                            if (((numbers[i] & 128) == 0) && (((numbers[i] << 1) & (screen[j] & (~numbers[i]))) == 0))
+                    switch (commands[i][j])  // checks that piece             checks that the piece
+                    {                        // doesnt go offscreen           doesnt hit other, landed pieces
+                        case 'L': if (((numbers[i] & 128) == 0) && (((numbers[i] << 1) & (screen[j] & (~numbers[i]))) == 0))
                             {                                                                 // virtually removes the piece 
                                 numbers[i] = numbers[i] << 1;                                 // from the current "screen row"  
                                 screen[j] = numbers[i] | (screen[j] & (~(numbers[i] >> 1)));  // to check whether shifting it
-                            } break;                                                          //  would put it ontop of any 
-                        case 'R':                                                             // other, already landed, pieces
-                            if (((numbers[i] & 1) == 0) && (((numbers[i] >> 1) & (screen[j] & (~numbers[i]))) == 0))
-                            {                                                                 // same thing for shifting right
-                                numbers[i] = numbers[i] >> 1;
+                            } break;                                                          //  would put it ontop of any
+                        case 'R': if (((numbers[i] & 1) == 0) && (((numbers[i] >> 1) & (screen[j] & (~numbers[i]))) == 0))
+                            {                                                                 // other, already landed, pieces
+                                numbers[i] = numbers[i] >> 1;                                 // same thing for shifting right
                                 screen[j] = numbers[i] | (screen[j] & (~(numbers[i] << 1)));
                             } break;
                     }
@@ -107,7 +104,6 @@ class Bittris2
                             for (int p = j + 1; p >= 1; p--) // shifting rows down again
                             {
                                 screen[p] = screen[p - 1];
-                                screen[p - 1] = 0;
                             }
                         }
                         else totalScore += pointsPerNum[i]; // if no line was made, awards points for landing
