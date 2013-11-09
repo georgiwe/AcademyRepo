@@ -8,10 +8,8 @@ class BitExchange
         uint number = uint.Parse(Console.ReadLine());
         Console.Write("The utmost right bit we start switching from: ");
         int frontStartingBit = int.Parse(Console.ReadLine()); 
-        frontStartingBit--;
         Console.Write("The utmost left bit we start switching from: ");
-        int endStartingBit = int.Parse(Console.ReadLine()); 
-        endStartingBit--;
+        int endStartingBit = int.Parse(Console.ReadLine());
         Console.Write("How many bits are we switching? : ");
         int numberOfBitsToChange = int.Parse(Console.ReadLine());
         int resultNumber = (int) number;
@@ -28,7 +26,7 @@ class BitExchange
         Console.WriteLine("\n\n{0} {1,14} {2, 4} {3, 4} {4, 4} {5, 4} {6, 4} {7, 3} {8, 4}","", 32, 28, 24, 20, 16, 12, 8, 4);
         Console.WriteLine("{0,-10} ={1, 32}", number, numberBitwiseSorted);
 
-        for (int i = 0; i < numberOfBitsToChange; i++)
+        for (int i = -1; i < numberOfBitsToChange; i++)
         {
             int mask = 1 << frontStartingBit + i;
             mask = resultNumber & mask;
