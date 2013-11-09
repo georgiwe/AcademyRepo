@@ -36,7 +36,7 @@ class BitExchange
             mask =  resultNumber & mask;
             int endBit = mask >> endStartingBit + i;
 
-            if (frontBit == endBit) { continue; }
+            if (frontBit == endBit) continue;
             if (frontBit == 1)
             {
                 mask = 1 << endStartingBit + i;
