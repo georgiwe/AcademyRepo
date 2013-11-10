@@ -9,10 +9,9 @@ class BatGoikoTower2
         int step = 2;
 
         crossbeam[0] = 1;
-        for (int i = 1; i < height/2; i++)
+        for (int i = 1; i < height/2; i++, step++)
         {
             crossbeam[i] = crossbeam[i-1] + step;
-            step++;
         }
 
         int outerDots = height - 1;
