@@ -69,13 +69,11 @@ class Program
                 ConsoleKeyInfo command = Console.ReadKey();
                 if (command.Key == ConsoleKey.LeftArrow)
                 {
-                    if (left == 0) { }
-                    else left = left - 1;
+                    if (left != 0) left = left - 1;
                 }
                 else if (command.Key == ConsoleKey.RightArrow)
                 {
-                    if (left == 17) { }
-                    else left = left + 1;
+                    if (left != 17) left = left + 1;
                 }
                 else if (command.Key == ConsoleKey.Add)
                 {
