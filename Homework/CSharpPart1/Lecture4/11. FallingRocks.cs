@@ -70,14 +70,12 @@ class Program
                 if (command.Key == ConsoleKey.LeftArrow)
                 {
                     if (left == 0) { }
-                    else
-                        left = left - 1;
+                    else left = left - 1;
                 }
                 else if (command.Key == ConsoleKey.RightArrow)
                 {
                     if (left == 17) { }
-                    else
-                        left = left + 1;
+                    else left = left + 1;
                 }
                 else if (command.Key == ConsoleKey.Add)
                 {
@@ -93,6 +91,7 @@ class Program
             counter++;
         }
 
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Game Over");
         Console.WriteLine("Your score is {0} points!", score);
         Console.ReadLine();
