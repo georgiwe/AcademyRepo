@@ -33,7 +33,7 @@ class Program
 
         while (true)
         {
-            if (score - step == 1000) { difficulty++; step += 1000; }
+            if (score - step == 1000) { difficulty++; step += 1000; } // increases difficulty until 10 000 points
 
             Console.Clear();
             if (counter % speed == 0)
@@ -45,16 +45,15 @@ class Program
                         gameOver = true;
                         break;
                     }
-                    else 
-                        if (screen[screen.Length - 1][i] != ' ') score += 10;
+                    else if (screen[screen.Length - 1][i] != ' ') score += 10;
                 }
                 if (gameOver) break;
-
+                // pieces fall down
                 for (int i = screen.Length - 1; i >= 1; i--)
                 {
                     screen[i] = screen[i - 1];
                 }
-
+                // random number of pieces generated depending on difficulty level
                 screen[0] = "";
                 int count = rnd.Next(1, difficulty + 1);
                 for (int i = 1; i <= count; i++)
@@ -66,19 +65,18 @@ class Program
                     }
                 }
                 screen[0] = screen[0].PadRight(20, ' ');
-
             }
-
+            // prints the pieces after they have dropped one line
             for (int i = 0; i < screen.Length; i++)
             {
                 //ConsoleColor color = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), colorNames[rnd.Next(colorNames.Length)]);
                 //Console.ForegroundColor = color;
                 Console.WriteLine(screen[i]);
             }
-
+            // prints the dwarf and score
             Console.WriteLine(new string(' ', left) + dwarf);
             Console.WriteLine("Score: {0}", score);
-
+            // takes and conceals keyboard input
             Console.ForegroundColor = ConsoleColor.Black;
             if (Console.KeyAvailable == true)
             {
