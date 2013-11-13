@@ -19,14 +19,14 @@ class Program
         int difficulty = 1;
         int step = 0;
         int left = 10;
-        
+
         for (int i = 0; i < screen.Length; i++) screen[i] = new string(' ', 20);
 
         //string[] colorNames = ConsoleColor.GetNames(typeof(ConsoleColor));
         char[] rocks = new char[] { '@', '^', '*', '&', '+', '%', '$', '#', '!', '.', ';' };
 
-        Console.WriteLine("Use the Left and Right arrow keys to move sideways.\nUse '+' and '-' to adjust game speed.");
-        Console.WriteLine("Press \"P\" to pause.");
+        Console.WriteLine("- Use the Left and Right arrow keys to move sideways.\n- Use '+' and '-' to adjust game speed.");
+        Console.WriteLine("- Press \"P\" to pause.");
         Console.WriteLine("\nPress any key to start game.");
         Console.ReadKey();
 
@@ -47,13 +47,13 @@ class Program
                     else if (screen[screen.Length - 1][i] != ' ') score += 10;
                 }
                 if (gameOver) break;
-                
+
                 // pieces fall down
                 for (int i = screen.Length - 1; i >= 1; i--)
                 {
                     screen[i] = screen[i - 1];
                 }
-                
+
                 // random number of pieces generated depending on difficulty level
                 screen[0] = "";
                 int count = rnd.Next(1, difficulty + 1);
@@ -62,12 +62,12 @@ class Program
                     if (screen[0].Length < 19)
                     {
                         int indent = rnd.Next(19 / i);
-                        screen[0] += new string(' ', indent) + rocks[rnd.Next(rocks.Length)];
+                        screen[0] += new string(' ', indent) + new string(rocks[rnd.Next(rocks.Length)], rnd.Next(1,difficulty));
                     }
                 }
                 screen[0] = screen[0].PadRight(20, ' ');
             }
-            
+
             // prints the pieces after they have dropped one line
             for (int i = 0; i < screen.Length; i++)
             {
@@ -75,11 +75,11 @@ class Program
                 //Console.ForegroundColor = color;
                 Console.WriteLine(screen[i]);
             }
-            
+
             // prints the dwarf and score
             Console.WriteLine(new string(' ', left) + dwarf);
             Console.WriteLine("Score: {0}", score);
-            
+
             // takes and conceals keyboard input
             Console.ForegroundColor = ConsoleColor.Black;
             if (Console.KeyAvailable == true)
@@ -116,8 +116,8 @@ class Program
         }
 
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Game Over");
-        Console.WriteLine("Your score is {0} points!", score);
+        Console.WriteLine("\n\n\n\n\n\n\n{0, 34}\n", "Game Over");
+        Console.WriteLine("{0, 32}{1}{2}","Your score is ", score, " points!");
         Console.ReadLine();
     }
 }
