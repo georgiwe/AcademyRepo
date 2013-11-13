@@ -16,8 +16,9 @@ class Program
         bool gameOver = false;
         int speed = 15;
         int score = 0;
+        int difficulty = 1;
+        int step = 0;
         
-
         for (int i = 0; i < screen.Length; i++) screen[i] = new string(' ', 20);
 
         //string[] colorNames = ConsoleColor.GetNames(typeof(ConsoleColor));
@@ -32,17 +33,20 @@ class Program
 
         while (true)
         {
+            if (score - step == 1000) { difficulty++; step += 1000; }
+
             Console.Clear();
             if (counter % speed == 0)
             {
-                for (int i = 0; i < screen[screen.Length - 2].Length; i++)
+                for (int i = 0; i < screen[screen.Length - 1].Length - 1; i++)
                 {
                     if (screen[screen.Length - 1][i] != ' ' && (i >= left && i < left + 3))
                     {
                         gameOver = true;
                         break;
                     }
-                    else if (screen[screen.Length - 1][i] != ' ') score += 10;
+                    else 
+                        if (screen[screen.Length - 1][i] != ' ') score += 10;
                 }
                 if (gameOver) break;
 
@@ -51,8 +55,18 @@ class Program
                     screen[i] = screen[i - 1];
                 }
 
-                int indent = rnd.Next(0, 20);
-                screen[0] = (new string(' ', rnd.Next(0, 20)) + rocks[rnd.Next(rocks.Length)]).PadRight(20, ' ');
+                screen[0] = "";
+                int count = rnd.Next(1, difficulty + 1);
+                for (int i = 1; i <= count; i++)
+                {
+                    if (screen[0].Length < 19)
+                    {
+                        int indent = rnd.Next(19 / i);
+                        screen[0] += new string(' ', indent) + rocks[rnd.Next(rocks.Length)];
+                    }
+                }
+                screen[0] = screen[0].PadRight(20, ' ');
+
             }
 
             for (int i = 0; i < screen.Length; i++)
@@ -61,9 +75,8 @@ class Program
                 //Console.ForegroundColor = color;
                 Console.WriteLine(screen[i]);
             }
-            
+
             Console.WriteLine(new string(' ', left) + dwarf);
-            
             Console.WriteLine("Score: {0}", score);
 
             Console.ForegroundColor = ConsoleColor.Black;
