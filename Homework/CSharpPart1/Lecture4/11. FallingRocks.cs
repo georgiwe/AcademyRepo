@@ -6,8 +6,8 @@ class Program
     static void Main()
     {
         Console.SetWindowSize(60, 21);
-        //Console.BufferHeight = Console.WindowHeight;
-        //Console.BufferWidth = Console.WindowWidth;
+        Console.BufferHeight = Console.WindowHeight;
+        Console.BufferWidth = Console.WindowWidth;
         Console.CursorVisible = false;
         Random rnd = new Random();
         string[] screen = new string[18];
