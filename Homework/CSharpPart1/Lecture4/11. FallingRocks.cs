@@ -55,7 +55,7 @@ class Program
                     }
                     else if (screen[screen.Length - 1][i] != ' ')
                     {
-                        score += 100;
+                        score += 10;
 
                         if (score - step2 == 1000 && score != 0)
                         {
