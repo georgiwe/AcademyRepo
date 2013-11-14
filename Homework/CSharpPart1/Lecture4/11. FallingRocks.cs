@@ -1,14 +1,13 @@
 using System;
 using System.Threading;
-using System.Text;
 
 class Program
 {
     static void Main()
     {
         Console.SetWindowSize(60, 21);
-        Console.BufferHeight = Console.WindowHeight;
-        Console.BufferWidth = Console.WindowWidth;
+        //Console.BufferHeight = Console.WindowHeight;
+        //Console.BufferWidth = Console.WindowWidth;
         Console.CursorVisible = false;
         Random rnd = new Random();
         string[] screen = new string[18];
@@ -20,7 +19,7 @@ class Program
         int difficulty = 1;
         int step = 0;
         int step2 = 0;
-        int left = 10;
+        int left = 8;
         byte lives = 3;
         bool lightshow = false;
 
@@ -32,21 +31,19 @@ class Program
         Console.WriteLine("- Use the Left and Right arrow keys to move sideways.\n\n- Use '+' and '-' to adjust game speed.");
         Console.WriteLine("\n- Press 'P' to pause.");
         Console.WriteLine("- Press 'Delete' to toggle \"Lightshow mode\"");
-        Console.WriteLine("\n\n\nIf you score 11 000 points - you win.");
+        Console.WriteLine("\n\n\nIf you score 10 000 points - you win.");
         Console.WriteLine("\nPress any key to start game.");
         Console.ReadKey();
 
         while (true)
         {
             byte livesCheck = lives;
-            
-
             Console.Clear();
             if (counter % speed == 0)
             {
                 for (int i = 0; i < screen[screen.Length - 1].Length - 1; i++)
                 {
-                    if ((screen[screen.Length - 1][i] != ' ' && (i >= left && i < left + 3)) || (score >= 11000))
+                    if ((screen[screen.Length - 1][i] != ' ' && (i >= left && i < left + 3)) || (score >= 10000))
                     {
                         gameOver = true;
 
@@ -68,7 +65,7 @@ class Program
                     }
                 }
 
-                if ((gameOver && lives == 0) || (score >= 11000)) break;
+                if ((gameOver && lives == 0) || (score >= 10000)) break;
 
                 // pieces fall down
                 for (int i = screen.Length - 1; i >= 1; i--)
@@ -90,7 +87,7 @@ class Program
             // prints the pieces after they have dropped one line
             for (int i = 0; i < screen.Length; i++)
             {
-                if (score >= 11000 || lightshow)
+                if (score >= 9000 || lightshow)
                 {
                     ConsoleColor color = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), colorNames[rnd.Next(colorNames.Length)]);
                     Console.ForegroundColor = color;
@@ -100,10 +97,9 @@ class Program
             }
 
             // prints the dwarf and score
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string(' ', left) + dwarf);
             Console.WriteLine("Score: {0}   Lives: {1}", score, lives);
-            Console.ResetColor();
             // takes and conceals keyboard input
             Console.ForegroundColor = ConsoleColor.Black;
             if (Console.KeyAvailable == true)
@@ -129,7 +125,7 @@ class Program
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\bGame paused. Press any key to continue...");
-                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     while (!Console.KeyAvailable) { }
                 }
                 else if (command.Key == ConsoleKey.L) lives++;
@@ -152,16 +148,16 @@ class Program
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.SetCursorPosition(5, 10);
                 Console.WriteLine("Get ready!");
-                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Thread.Sleep(950);
             }
 
-            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Thread.Sleep(50);
             counter++;
         }
 
-        if (score < 11000)
+        if (score < 10000)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n\n\n\n\n\n\n{0, 33}\n", "Game Over");
