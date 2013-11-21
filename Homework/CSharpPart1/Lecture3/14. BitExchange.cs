@@ -18,7 +18,7 @@ class BitExchange
         int numberOfBitsToChange = int.Parse(Console.ReadLine());
         int resultNumber = (int) number;
 
-        // presenting the number, divided in sets of 4 bits
+        // presenting the number, divided in sequences of 4 bits
         string numberBitwise = Convert.ToString(number, 2).PadLeft(32, '0');
         string numberBitwiseSorted = "";
 
@@ -42,17 +42,17 @@ class BitExchange
             mask =  resultNumber & mask;
             int endBit = mask >> endStartingBit + i;
 
-            if (frontBit == endBit) continue;           // checks if bits are identical
-            if (frontBit == 1)                          // if not, checks if one bit is 1. that means the other is 0. then switches each to the opposite
-            {
+            if (frontBit == endBit) continue;           // checks if bits are identical. if not,
+            if (frontBit == 1)                          // checks if one bit is 1. that means that
+            {                                           // the other is 0. then switches each to the opposite
                 mask = 1 << endStartingBit + i;
                 resultNumber = (resultNumber | mask);
 
                 mask = 1 << frontStartingBit + i;
                 resultNumber = (resultNumber & ~mask);
             }
-            else                                        // checks if the other one is 1 and switches the each bit to the opposite
-            {
+            else                                        // checks if the other one is 1 and 
+            {                                           // switches the each bit to the opposite
                 mask = 1 << endStartingBit + i;
                 resultNumber = (resultNumber & ~mask);
 
@@ -61,7 +61,7 @@ class BitExchange
             }
         }
 
-        // converts the resulting number into binary, separated in 4 bit sets
+        // converts the resulting number into binary, separated in 4 bit sequences
         numberBitwise = Convert.ToString(resultNumber, 2).PadLeft(32, '0');
         numberBitwiseSorted = "";
 
