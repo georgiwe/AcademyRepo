@@ -18,16 +18,17 @@ class BitExchange
         int numberOfBitsToChange = int.Parse(Console.ReadLine());
         int resultNumber = (int) number;
 
-        // presenting the number, divided in sequences of 4 bits
+        // presenting the number, divided in sets of 4 bits
         string numberBitwise = Convert.ToString(number, 2).PadLeft(32, '0');
+        
         string numberBitwiseSorted = "";
-
         for (int i = 0; i < numberBitwise.Length; i++)
         {
             if (i % 4 == 0) numberBitwiseSorted = numberBitwiseSorted + " " + numberBitwise[i];
             else numberBitwiseSorted = numberBitwiseSorted + numberBitwise[i];
         }
-
+        
+        // the bit counting aid line
         Console.WriteLine("\n\n{0} {1,15} {2, 4} {3, 4} {4, 4} {5, 4} {6, 4} {7, 3} {8, 4}",
         "", 32, 28, 24, 20, 16, 12, 8, 4);
         Console.WriteLine("{0, 11} ={1, 32}", number, numberBitwiseSorted);
@@ -53,7 +54,7 @@ class BitExchange
                 resultNumber = (resultNumber & ~mask);
             }
             else                                        // checks if the other one is 1 and 
-            {                                           // switches the each bit to the opposite
+            {                                           // switches each bit to the opposite
                 mask = 1 << endStartingBit + i;
                 resultNumber = (resultNumber & ~mask);
 
@@ -62,7 +63,7 @@ class BitExchange
             }
         }
 
-        // converts the resulting number into binary, separated in 4 bit sequences
+        // converts the resulting number into binary, separated in 4 bit sets
         numberBitwise = Convert.ToString(resultNumber, 2).PadLeft(32, '0');
         numberBitwiseSorted = "";
 
