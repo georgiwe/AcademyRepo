@@ -28,7 +28,8 @@ class BitExchange
             else numberBitwiseSorted = numberBitwiseSorted + numberBitwise[i];
         }
 
-        Console.WriteLine("\n\n{0} {1,15} {2, 4} {3, 4} {4, 4} {5, 4} {6, 4} {7, 3} {8, 4}","", 32, 28, 24, 20, 16, 12, 8, 4);
+        Console.WriteLine("\n\n{0} {1,15} {2, 4} {3, 4} {4, 4} {5, 4} {6, 4} {7, 3} {8, 4}",
+        "", 32, 28, 24, 20, 16, 12, 8, 4);
         Console.WriteLine("{0, 11} ={1, 32}", number, numberBitwiseSorted);
 
         // the bit exchange
