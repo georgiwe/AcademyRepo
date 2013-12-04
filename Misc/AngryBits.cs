@@ -23,8 +23,8 @@ class AngryBits
 
             int mask = 1 << bird;
 
-            for (int i = 0; i < 8; i++) // finding the bird in this column
-            {
+            for (int i = 0; i < 8; i++)
+            {   // finding the bird in this column
                 if ((mask & field[i]) != 0)
                 {
                     birdX = birdXstart = bird;
@@ -35,74 +35,68 @@ class AngryBits
                 }
             }
 
-            int pigX;
-            int pigY;
             bool movingUp = true;
-
-            while (foundAbird == true) // flying up/right
-            {
+            while (foundAbird == true)
+            {   // flying up/right
                 if (birdY >= 1 && movingUp == true) { birdX--; birdY--; }
 
                 mask = 1 << birdX;
-
                 if ((mask & field[birdY]) != 0)
                 {
                     hitSth = true;
-                    pigX = birdX;
-                    pigY = birdY;
                     int pigMask = 1;
 
-                    if (pigY == 0) // counting and clearing pigs
-                        for (int i = pigX - 1; i <= pigX + 1; i++)
-                        {
+                    if (birdY == 0)
+                        for (int i = birdX - 1; i <= birdX + 1; i++)
+                        {   // counting and clearing pigs
                             pigMask = 1 << i;
 
-                            if ((pigMask & field[pigY]) != 0) 
+                            if ((pigMask & field[birdY]) != 0) 
                             {
                                 destroyedPigCounter++; 
-                                field[pigY] = (ushort)((~pigMask) & field[pigY]); 
+                                field[birdY] = (ushort)((~pigMask) & field[birdY]); 
                             }
-                            if ((pigMask & field[pigY + 1]) != 0) 
+                            if ((pigMask & field[birdY + 1]) != 0) 
                             {
                                 destroyedPigCounter++; 
-                                field[pigY + 1] = (ushort)((~pigMask) & field[pigY + 1]); 
+                                field[birdY + 1] = (ushort)((~pigMask) & field[birdY + 1]); 
                             }
                         }
-                    else if (pigY == 7)
-                        for (int i = pigX - 1; i <= pigX + 1; i++)
+                    else if (birdY == 7)
+                        for (int i = birdX - 1; i <= birdX + 1; i++)
                         {
                             pigMask = 1 << i;
 
-                            if ((pigMask & field[pigY]) != 0) 
+                            if ((pigMask & field[birdY]) != 0) 
                             {
                                 destroyedPigCounter++; 
-                                field[pigY] = (ushort)((~pigMask) & field[pigY]); 
+                                field[birdY] = (ushort)((~pigMask) & field[birdY]); 
                             }
-                            if ((pigMask & field[pigY - 1]) != 0) 
+                            if ((pigMask & field[birdY - 1]) != 0) 
                             {
                                 destroyedPigCounter++; 
-                                field[pigY - 1] = (ushort)((~pigMask) & field[pigY - 1]); 
+                                field[birdY - 1] = (ushort)((~pigMask) & field[birdY - 1]); 
                             }
                         }
                     else
-                        for (int i = pigX - 1; i <= pigX + 1; i++)
+                        for (int i = birdX - 1; i <= birdX + 1; i++)
                         {
                             pigMask = 1 << i;
 
-                            if ((pigMask & field[pigY]) != 0) 
+                            if ((pigMask & field[birdY]) != 0) 
                             {
                                 destroyedPigCounter++; 
-                                field[pigY] = (ushort)((~pigMask) & field[pigY]); 
+                                field[birdY] = (ushort)((~pigMask) & field[birdY]); 
                             }
-                            if ((pigMask & field[pigY + 1]) != 0) 
+                            if ((pigMask & field[birdY + 1]) != 0) 
                             {
                                 destroyedPigCounter++; 
-                                field[pigY + 1] = (ushort)((~pigMask) & field[pigY + 1]); 
+                                field[birdY + 1] = (ushort)((~pigMask) & field[birdY + 1]); 
                             }
-                            if ((pigMask & field[pigY - 1]) != 0) 
+                            if ((pigMask & field[birdY - 1]) != 0) 
                             {
                                 destroyedPigCounter++; 
-                                field[pigY - 1] = (ushort)((~pigMask) & field[pigY - 1]); 
+                                field[birdY - 1] = (ushort)((~pigMask) & field[birdY - 1]); 
                             }
                         }
 
@@ -113,7 +107,6 @@ class AngryBits
                 else if (birdY == 0 || movingUp == false) { birdX--; birdY++; movingUp = false; }
                 else if (birdX == 0) break;
             }
-
 
             if (hitSth == true) totalScore += destroyedPigCounter * (birdXstart - birdX); // awarding points
         }
