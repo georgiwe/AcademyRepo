@@ -23,8 +23,8 @@ class AngryBits
 
             int mask = 1 << bird;
 
-            for (int i = 0; i < 8; i++)
-            {   // finding the bird in this column
+            for (int i = 0; i < 8; i++) // finding the bird in this column
+            {
                 if ((mask & field[i]) != 0)
                 {
                     birdX = birdXstart = bird;
@@ -39,8 +39,8 @@ class AngryBits
             int pigY;
             bool movingUp = true;
 
-            while (foundAbird == true)
-            {   // flying up/right
+            while (foundAbird == true) // flying up/right
+            {
                 if (birdY >= 1 && movingUp == true) { birdX--; birdY--; }
 
                 mask = 1 << birdX;
@@ -52,9 +52,9 @@ class AngryBits
                     pigY = birdY;
                     int pigMask = 1;
 
-                    if (pigY == 0)
+                    if (pigY == 0) // counting and clearing pigs
                         for (int i = pigX - 1; i <= pigX + 1; i++)
-                        {   // counting and clearing pigs
+                        {
                             pigMask = 1 << i;
 
                             if ((pigMask & field[pigY]) != 0) 
