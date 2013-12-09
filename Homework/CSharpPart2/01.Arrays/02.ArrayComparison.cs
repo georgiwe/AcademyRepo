@@ -22,9 +22,9 @@ class ArrayComparison
         for (int i = 0; i < count; i++)
         {
             Console.Write("Enter element {0} for array ONE: ", i);
-            arrayOne[i] = Console.ReadLine().Replace(" ", "");      // Maybe 2 spaces is the same
+            arrayOne[i] = Console.ReadLine();                       // Maybe 1 space is the same
             Console.Write("Enter element {0} for array TWO: ", i);  // as 0 or 4 spaces, 
-            arrayTwo[i] = Console.ReadLine().Replace(" ", "");      // maybe it is not?
+            arrayTwo[i] = Console.ReadLine();                       // maybe it isnt? Who cares...
 
             int zero = -1;
             Console.Write("The elements with index {0} are ", i);
