@@ -21,12 +21,12 @@ class ArrayComparison
 
         for (int i = 0; i < count; i++)
         {
-            Console.Write("Enter element {0} for array ONE: ", i);
-            arrayOne[i] = Console.ReadLine();                       // Maybe 1 space is the same
-            Console.Write("Enter element {0} for array TWO: ", i);  // as 0 or 4 spaces, 
-            arrayTwo[i] = Console.ReadLine();                       // maybe it isnt? Who cares...
+            Console.Write("Enter element {0} for array ONE: ", i); //| Maybe 1 space is the same
+            arrayOne[i] = Console.ReadLine(); // .Replace(" ", "");  | as 0 or 4 spaces, maybe it isnt?
+            Console.Write("Enter element {0} for array TWO: ", i); //| Maybe "who cares" and "whocares" 
+            arrayTwo[i] = Console.ReadLine(); // .Replace(" ", "");  | is the same thing, maybe not...
 
-            int zero = -1;
+            int zero = -1;                                          
             Console.Write("The elements with index {0} are ", i);
             if (int.TryParse(arrayOne[i], out zero) &&                           // We make sure that 000
                 int.TryParse(arrayTwo[i], out zero) && zero == 0)                // and 0 are the same thing.
