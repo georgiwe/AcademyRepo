@@ -12,7 +12,7 @@ class ArrayComparison
         Console.Write("How many elements for array two: ");
         int n = int.Parse(Console.ReadLine());
 
-        // I am using a string array, so that it can compare both numbers and letters
+        // I am using a string array, so that we can compare both numbers and letters
         string[] arrayOne = new string[m];
         string[] arrayTwo = new string[n];
 
@@ -22,16 +22,17 @@ class ArrayComparison
         for (int i = 0; i < count; i++)
         {
             Console.Write("Enter element {0} for array ONE: ", i);
-            arrayOne[i] = Console.ReadLine().Replace(" ", "");
-            Console.Write("Enter element {0} for array TWO: ", i);
-            arrayTwo[i] = Console.ReadLine().Replace(" ", "");
+            arrayOne[i] = Console.ReadLine().Replace(" ", "");      // Maybe 2 spaces is the same
+            Console.Write("Enter element {0} for array TWO: ", i);  // as 0 or 4 spaces, 
+            arrayTwo[i] = Console.ReadLine().Replace(" ", "");      // maybe it is not?
 
-            int zero = 0;
+            int zero = -1;
             Console.Write("The elements with index {0} are ", i);
-            if (int.TryParse(arrayOne[i], out zero) &&                               // We make sure that 000
-                int.TryParse(arrayTwo[i], out zero)) Console.WriteLine("the same."); // and 0 are the same thing.
-            else if (arrayOne[i] == arrayTwo[i]) Console.WriteLine("the same.");     // If both elements are not 0,
-            else Console.WriteLine("not the same.");                                 // we compare them.
+            if (int.TryParse(arrayOne[i], out zero) &&                           // We make sure that 000
+                int.TryParse(arrayTwo[i], out zero) && zero == 0)                // and 0 are the same thing.
+                Console.WriteLine("the same.");
+            else if (arrayOne[i] == arrayTwo[i]) Console.WriteLine("the same."); // If both elements are not 0,
+            else Console.WriteLine("not the same.");                             // we compare them.
 
             Console.WriteLine();
         }
