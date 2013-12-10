@@ -21,7 +21,7 @@ class MaxIncreasingSeq
 
             bool beenInside = false;
 
-            while (numbers[i] - numbers[i - 1] == 1)
+            while (numbers[i] > numbers[i - 1])
             {
                 currentResult.Add(numbers[i - 1]);
                 i++;
@@ -29,7 +29,7 @@ class MaxIncreasingSeq
                 if (i > n - 1) break;
             }
 
-            if (beenInside && numbers[i - 1] - numbers[i - 2] == 1) currentResult.Add(numbers[i - 1]);
+            if (beenInside && numbers[i - 1] > numbers[i - 2]) currentResult.Add(numbers[i - 1]);
 
             if (currentResult.Count > 1)
             {
