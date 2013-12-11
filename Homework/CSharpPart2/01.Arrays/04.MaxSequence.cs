@@ -8,27 +8,26 @@ class MaxSequence
     static void Main()
     {
         // I'll do it with strings. Fo sho!
-        //string[] anArray = new string[]
-        //{
-        //    "one", "two", "two", "two", "threesome", "threesome",
-        //    "one", "more", "threesome", "more", "eight and three quarters", 
-        //    "eight and three quarters", "eight and three quarters"
-        //};
+        string[] anArray = new string[]
+        {
+            "one", "two", "two", "two", "threesome", "threesome",
+            "one", "more", "threesome", "more", "eight and three quarters", 
+            "eight and three quarters", "eight and three quarters"
+        };
 
         // Or if you would like to enter them yourself, uncomment this bit:
+        //Console.Write("How many members to the innitial array: ");
+        //int n = int.Parse(Console.ReadLine());
+        //int useItToCheck = -1;
+        //string[] anArray = new string[n];
 
-        Console.Write("How many members to the innitial array: ");
-        int n = int.Parse(Console.ReadLine());
-        int useItToCheck = -1;
-        string[] anArray = new string[n];
-
-        for (int i = 0; i < n; i++)
-        {
-            Console.Write("Enter element {0}: ", i);
-            anArray[i] = Console.ReadLine();
-            // this will make sure that 0000 is the same as 0, for instnace
-            if (int.TryParse(anArray[i], out useItToCheck) && useItToCheck == 0) anArray[i] = 0.ToString();
-        }
+        //for (int i = 0; i < n; i++)
+        //{
+        //    Console.Write("Enter element {0}: ", i);
+        //    anArray[i] = Console.ReadLine();
+        //    // this will make sure that 0000 is the same as 0, for instnace
+        //    if (int.TryParse(anArray[i], out useItToCheck) && useItToCheck == 0) anArray[i] = 0.ToString();
+        //}
 
         int maxLength = 0; // the maximum length sequence
         List<string> sequenceMembers = new List<string>(); // will contain all the sequence members that have 
@@ -38,7 +37,7 @@ class MaxSequence
 
         for (int i = 0; i < anArray.Length - 1; i++)
         {
-            if (anArray[i] == anArray[i + 1]) sequenceLengthCounter++; // iff current sequence increases
+            if (anArray[i] == anArray[i + 1]) sequenceLengthCounter++; // if current sequence increases
             else sequenceLengthCounter = 1; // if the sequence ends
 
             if (sequenceLengthCounter > maxLength) // checks if the current sequence length is the longest yet
@@ -75,7 +74,7 @@ class MaxSequence
                 resultArray[j] = sequenceMembers[i];
                 Console.Write("{0}, ", resultArray[j]);
             }
-            Console.Write("\b\b}  \n"); // \b stands for backspace - I use it to delete the ", " after the last member
+            Console.Write("\b\b}  \n"); // \b stands for "backspace" - I use it to "delete" the ", " after the last member
         }
         Console.WriteLine();
     }
