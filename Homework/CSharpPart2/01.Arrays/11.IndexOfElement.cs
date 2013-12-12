@@ -11,25 +11,25 @@ class IndexOfElement
         int[] numbers = new int[n];
 
         for (int i = 0; i < n; i++)
-        {
-            Console.Write("Element {0} = ", i);
+        {                                                   // array
+            Console.Write("Element {0} = ", i);             // input
             numbers[i] = int.Parse(Console.ReadLine());
         }
 
         Array.Sort(numbers);
-        Console.WriteLine("\nThe sorted array is: \n");
-        for (int i = 0; i < numbers.Length; i++)
-            Console.WriteLine("array[{0}] = {1}", i, numbers[i]);
+        Console.WriteLine("\nThe sorted array is: \n");              // sorting and
+        for (int i = 0; i < numbers.Length; i++)                     // printing the
+            Console.WriteLine("array[{0}] = {1}", i, numbers[i]);    // sorted array
 
         Console.Write("\nWe are looking for the index of: ");
-        int numWeLookFor = int.Parse(Console.ReadLine());
+        int numWeLookFor = int.Parse(Console.ReadLine());            // we input a number to search for
 
         Console.WriteLine();
         int firstIndex = 0;
         int lastIndex = numbers.Length - 1;
         int index = (firstIndex + lastIndex) / 2;
 
-        
+        // the actual search
         while (index != firstIndex && index != lastIndex)
         {
             index = (firstIndex + lastIndex) / 2;
@@ -45,26 +45,26 @@ class IndexOfElement
 
                 while (newIndex >= 0 && numbers[newIndex] == numWeLookFor)
                 {
-                    indices.Add(newIndex);
-                    counter++;
-                    newIndex--;
+                    indices.Add(newIndex);                    // looking for more matches
+                    counter++;                                // to the left
+                    newIndex--;                               // since it's a sorted array
                 }
 
                 newIndex = index + 1;
                 while ((newIndex <= (numbers.Length - 1)) && numbers[newIndex] == numWeLookFor)
                 {
-                    indices.Add(newIndex);
-                    counter++;
-                    newIndex++;
+                    indices.Add(newIndex);                 // looking for more matches
+                    counter++;                             // to the RIGHT
+                    newIndex++;                            // since it's a sorted array
                 }
 
                 if (counter != 1)
                 {
                     Console.WriteLine("Found {0} occurance of the number \"{1}\".", counter, numWeLookFor);
                     Console.Write("Their indices are: ");
-
-                    indices.Sort();
-
+                                                                            // making the output
+                    indices.Sort();                                         // look all...
+                                                                            // nice and pretty
                     for (int i = 0; i < counter; i++)
                     {
                         if (counter == 1) Console.WriteLine("");
