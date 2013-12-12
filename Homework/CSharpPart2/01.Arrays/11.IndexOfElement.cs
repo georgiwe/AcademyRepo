@@ -32,7 +32,7 @@ class IndexOfElement
         // the actual search
         while (index != firstIndex && index != lastIndex)
         {
-            index = (firstIndex + lastIndex) / 2;
+            index = firstIndex / 2 + lastIndex / 2;
 
             if (numWeLookFor > numbers[index]) firstIndex = index + 1;
             else if (numWeLookFor < numbers[index]) lastIndex = index - 1;
