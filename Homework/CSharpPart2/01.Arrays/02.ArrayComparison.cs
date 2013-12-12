@@ -28,8 +28,8 @@ class ArrayComparison
 
             int zero = -1;                                          
             Console.Write("The elements with index {0} are ", i);
-            if (int.TryParse(arrayOne[i], out zero) &&                           // We make sure that 000
-                int.TryParse(arrayTwo[i], out zero) && 
+            if (int.TryParse(arrayOne[i], out zero) &&
+                int.TryParse(arrayTwo[i], out zero) &&                  // We make sure that 000
                 arrayOne[i] == arrayTwo[i] && zero == 0)                // and 0 are the same thing.
                 Console.WriteLine("the same.");
             else if (arrayOne[i] == arrayTwo[i]) Console.WriteLine("the same."); // If both elements are not 0,
