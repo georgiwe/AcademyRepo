@@ -60,7 +60,7 @@ class IndexOfElement
 
                 if (counter != 1)
                 {
-                    Console.WriteLine("Found {0} occurance of the number \"{1}\".", counter, numWeLookFor);
+                    Console.WriteLine("Found {0} occurances of the number \"{1}\".", counter, numWeLookFor);
                     Console.Write("Their indices are: ");
                                                                             // making the output
                     indices.Sort();                                         // look all...
