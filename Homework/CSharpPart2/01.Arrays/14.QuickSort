@@ -39,6 +39,6 @@ class QuickSort
 
         foreach (var element in theArray) Console.Write(element + " ");
         
-        Console.WriteLine();
+        Console.WriteLine("\b\b. ");
     }
 }
