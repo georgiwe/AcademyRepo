@@ -10,7 +10,7 @@ class Eratosthenes
 
         sw.Start();
 
-        int[] numbers = new int[10000000];
+        int[] numbers = new int[10000001];
 
         for (int p = 2; p < Math.Sqrt(numbers.Length); p++)
             if (numbers[p] == 0) // means it's unmarked, means it's prime
