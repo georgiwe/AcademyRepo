@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+
+class QuickSort
+{
+    static int[] Qsort(int[] arr)
+    {
+        var arrList = new List<int>(arr);
+
+        if (arrList.Count <= 1) return arrList.ToArray();
+
+        var smaller = new List<int>();
+        var bigger = new List<int>();
+
+        int pivot = arrList[arrList.Count - 1];
+
+        for (int i = 0;  i < arrList.Count - 1; i++)
+            if (arrList[i] > pivot) bigger.Add(arrList[i]);
+            else smaller.Add(arrList[i]);
+
+        smaller = new List<int>(Qsort(smaller.ToArray()));
+        bigger = new List<int>(Qsort(bigger.ToArray()));
+
+        int[] resultArray = new int[arrList.Count];
+
+        smaller.Add(pivot);
+        smaller.AddRange(bigger);
+
+        resultArray = smaller.ToArray();
+
+        return resultArray;
+    }
+
+    static void Main()
+    {
+        int[] theArray = { 6, 1, 3, 7, 8, 5, 2, 4 };
+
+        theArray = Qsort(theArray);
+
+        foreach (var element in theArray) Console.Write(element + " ");
+        
+        Console.WriteLine();
+    }
+}
