@@ -27,7 +27,7 @@ class IndexOfElement
         Console.WriteLine();
         int firstIndex = 0;
         int lastIndex = numbers.Length - 1;
-        int index = (firstIndex + lastIndex) / 2;
+        int index = firstIndex / 2 + lastIndex / 2;
 
         // the actual search
         while (index != firstIndex && index != lastIndex)
