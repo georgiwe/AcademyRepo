@@ -15,7 +15,7 @@ class Permutations
                 Work(elements, toPrint);
 
                 if (toPrint.Length == elements.Count) Console.WriteLine(toPrint);
-                else if (toPrint.Length > 0) toPrint = toPrint.Substring(0, toPrint.Length - 1);
+                if (toPrint.Length > 0) toPrint = toPrint.Substring(0, toPrint.Length - 1);
             }
         }
     }
