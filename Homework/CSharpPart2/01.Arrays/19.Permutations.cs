@@ -22,7 +22,7 @@ class Permutations
 
     static void Main()
     {
-        int n = 3;
+        int n = int.Parse(Console.ReadLine());
 
         var elements = new List<int>();
         for (int i = 1; i <= n; i++) elements.Add(i);
