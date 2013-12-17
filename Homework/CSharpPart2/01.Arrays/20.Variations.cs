@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-class Permutations
+class Variations
 {
     static void Work(List<int> elements, int k, string toPrint = "")
     {
