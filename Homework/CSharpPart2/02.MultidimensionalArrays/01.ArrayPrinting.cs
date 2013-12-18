@@ -54,9 +54,8 @@ class ArrayPrinting
 
             while (currentRow < n && currentCol < n)
             {
-                arr[currentRow, currentCol] = filler;
+                arr[currentRow, currentCol] = filler++;
 
-                filler++;
                 currentCol++;
                 currentRow++;
             }
@@ -73,17 +72,15 @@ class ArrayPrinting
         {
             ColDown(arr, startCol, cellsToFill, startRow);
             startCol++;
-            startRow += cellsToFill - 1;
-            cellsToFill--;
+            startRow += cellsToFill-- - 1;
 
             RowRight(arr, startRow, startCol, cellsToFill);
             startRow--;
             startCol += cellsToFill - 1;
 
             ColUp(arr, startCol, cellsToFill, startRow);
-            startRow -= cellsToFill - 1;
+            startRow -= cellsToFill-- - 1;
             startCol--;
-            cellsToFill--;
 
             RowLeft(arr, startRow, startCol, cellsToFill);
             startRow++;
