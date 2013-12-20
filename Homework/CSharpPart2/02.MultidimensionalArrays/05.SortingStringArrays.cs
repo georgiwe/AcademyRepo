@@ -34,5 +34,7 @@ class SortingStringArrays
                                 "Bruhaha", "Astika", "Carlsberg", "Heineken" };
 
         stringsBro = Qsort(stringsBro);
+
+        Console.WriteLine(String.Join("\n", stringsBro));
     }
 }
