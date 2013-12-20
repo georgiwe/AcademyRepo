@@ -35,7 +35,7 @@ class QuickSort
 
     static void Main()
     {
-        string[] theArray = { "Krsoso", "krsoso", "waawaw", "arggg", 
+        string[] theArray = { "krsoso", "krsoso", "waawaw", "arggg", 
                               "mgomgogmo", "jjjj", "oqqq", "qqqqw" };
 
         theArray = Qsort(theArray);
