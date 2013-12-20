@@ -30,8 +30,8 @@ class SortingStringArrays
 
     static void Main()
     {
-        string[] stringsBro = { "Ariana", "Heineken", "Zagorka", "Shumensko",
-                                "Bruhaha", "Astika", "Carlsberg", "Staropramen"};
+        string[] stringsBro = { "Ariana", "Staropramen", "Zagorka", "Shumensko",
+                                "Bruhaha", "Astika", "Carlsberg", "Heineken" };
 
         stringsBro = Qsort(stringsBro);
     }
