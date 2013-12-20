@@ -17,7 +17,7 @@ class QuickSort
         string pivot = arrList[arrList.Count - 1];
 
         for (int i = 0;  i < arrList.Count - 1; i++)
-            if (arrList[i].CompareTo(pivot) > 0) bigger.Add(arrList[i]); // elem > pivot
+            if (arrList[i].CompareTo(pivot) > 0) bigger.Add(arrList[i]);
             else smaller.Add(arrList[i]);
 
         smaller = new List<string>(Qsort(smaller.ToArray()));
