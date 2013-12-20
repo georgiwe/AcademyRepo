@@ -1,27 +1,29 @@
+// Write a program that sorts an array of strings using the quick sort algorithm
+
 using System;
 using System.Collections.Generic;
 
 class QuickSort
 {
-    static int[] Qsort(int[] arr)
+    static string[] Qsort(string[] arr)
     {
-        var arrList = new List<int>(arr);
+        var arrList = new List<string>(arr);
 
         if (arrList.Count <= 1) return arrList.ToArray();
 
-        var smaller = new List<int>();
-        var bigger = new List<int>();
+        var smaller = new List<string>();
+        var bigger = new List<string>();
 
-        int pivot = arrList[arrList.Count - 1];
+        string pivot = arrList[arrList.Count - 1];
 
         for (int i = 0;  i < arrList.Count - 1; i++)
-            if (arrList[i] > pivot) bigger.Add(arrList[i]);
+            if (arrList[i].CompareTo(pivot) > 0) bigger.Add(arrList[i]); // elem > pivot
             else smaller.Add(arrList[i]);
 
-        smaller = new List<int>(Qsort(smaller.ToArray()));
-        bigger = new List<int>(Qsort(bigger.ToArray()));
+        smaller = new List<string>(Qsort(smaller.ToArray()));
+        bigger = new List<string>(Qsort(bigger.ToArray()));
 
-        int[] resultArray = new int[arrList.Count];
+        string[] resultArray = new string[arrList.Count];
 
         smaller.Add(pivot);
         smaller.AddRange(bigger);
@@ -33,11 +35,12 @@ class QuickSort
 
     static void Main()
     {
-        int[] theArray = { 6, 1, 3, 7, 8, 5, 2, 4 };
+        string[] theArray = { "Krsoso", "krsoso", "waawaw", "arggg", 
+                              "mgomgogmo", "jjjj", "oqqq", "qqqqw" };
 
         theArray = Qsort(theArray);
 
-        foreach (var element in theArray) Console.Write(element + " ");
+        foreach (var element in theArray) Console.Write(element + ", ");
         
         Console.WriteLine("\b\b. ");
     }
