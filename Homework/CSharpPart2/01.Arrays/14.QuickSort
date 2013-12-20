@@ -22,15 +22,11 @@ class QuickSort
 
         smaller = new List<string>(Qsort(smaller.ToArray()));
         bigger = new List<string>(Qsort(bigger.ToArray()));
-
-        string[] resultArray = new string[arrList.Count];
-
+        
         smaller.Add(pivot);
         smaller.AddRange(bigger);
 
-        resultArray = smaller.ToArray();
-
-        return resultArray;
+        return smaller.ToArray();
     }
 
     static void Main()
