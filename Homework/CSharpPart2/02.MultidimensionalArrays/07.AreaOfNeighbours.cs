@@ -1,6 +1,3 @@
-// Write a program that finds the largest area of equal neighbor elements 
-// in a rectangular matrix and prints its size.
-
 using System;
 
 class AreaOfNeighbours
@@ -12,8 +9,8 @@ class AreaOfNeighbours
 
     static void CheckAround(int?[,] arr, int row, int col)
     {
-        Compare(arr, row, col, "right");
-        Compare(arr, row, col, "downright");
+        Compare(arr, row, col, "right");      // checks for equal elements
+        Compare(arr, row, col, "downright");  // around the current element
         Compare(arr, row, col, "down");
         Compare(arr, row, col, "downleft");
         Compare(arr, row, col, "left");
@@ -24,7 +21,7 @@ class AreaOfNeighbours
 
     static void Compare(int?[,] arr, int row, int col, string direction)
     {
-        arr[row, col] = null; //if (row < 0 || col < 0 || row > arr.GetLength(0) - 1 || col > arr.GetLength(1) - 1) return;
+        arr[row, col] = null; // i null the checked element so it gets skipped from now on
 
         switch (direction)
         {
@@ -37,12 +34,12 @@ class AreaOfNeighbours
             case "downright": row++; col++; break;
             case "downleft": row++; col--; break;
         }
-
+             // this checks if the row/col indices are within range
         if ((row < 0 || col < 0 || row > arr.GetLength(0) - 1 || col > arr.GetLength(1) - 1) == false && 
-            element == arr[row, col])
+            element == arr[row, col]) // this checks for equality
         {
             currCount++;
-            CheckAround(arr, row, col);
+            CheckAround(arr, row, col); // we recursively check around the newlyfound element
         }
     }
 
@@ -61,13 +58,13 @@ class AreaOfNeighbours
         {
             for (int col = 0; col < arr.GetLength(1); col++)
             {
-                if (arr[row, col] == null) continue;
+                if (arr[row, col] == null) continue; // we traverse non-null elements
 
                 currCount = 1;
-                element = arr[row, col];
-
+                element = arr[row, col]; // store the current element being checked so we dont lose
+                                         // its value when it gets nulled
                 CheckAround(arr, row, col);
-
+                // if we have found a larger area of equal elements, we store its size and element
                 if (currCount > maxCount) { maxCount = currCount; maxElement = element; }
             }
         }
