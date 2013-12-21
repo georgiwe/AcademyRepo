@@ -12,7 +12,7 @@ class HelloNameLOL
 
         foreach (var character in name)
             if (!char.IsLetter(character) && !char.IsWhiteSpace(character)) 
-                { Console.WriteLine("Try entering a proper name and then come back!"); return; }
+                { Console.WriteLine("Try entering a proper name!"); return; }
 
         Console.WriteLine("\nHello, {0}!\n", ti.ToTitleCase(name));
     }
