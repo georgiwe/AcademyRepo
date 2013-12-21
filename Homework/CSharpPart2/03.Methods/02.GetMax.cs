@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 class GetDaMAX
 {
-    static int? GetMax(List<int> numbers)
+    static int? GetMax(List<int> numbers, int iDontNeedThis = int.MaxValue)
     {
         if (numbers.Count == 0) { Console.WriteLine("You didnt enter anything!"); return null; }
 
