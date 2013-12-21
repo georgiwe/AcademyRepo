@@ -42,7 +42,7 @@ class ArrayPrinting
         int startRow = n;
         int startCol = 0;
 
-        while (filler <= Math.Pow(n, 2))
+        while (filler <= n * n)
         {
             if (startRow == 0) startCol++;
             else startCol = 0;
