@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 
-class GetMax
+class GetDAMax
 {
     static int? GetMax(List<int> numbers)
     {
