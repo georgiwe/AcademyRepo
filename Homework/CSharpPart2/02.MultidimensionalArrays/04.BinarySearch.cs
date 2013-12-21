@@ -15,8 +15,8 @@ class BinarySearch
         Array.Sort(integers);
 
         if (k < integers[0]) { Console.WriteLine("K is smaller than all the elements of the array."); return; }
-        if (k >= integers[n - 1]) { Console.WriteLine(
-            "The largest number is {0} and its index is {1}", integers[n - 1], n - 1); return; }
+        if (k >= integers[n - 1]) 
+        { Console.WriteLine("The largest number is {0} and its index is {1}", integers[n - 1], n - 1); return; }
         // the check for k >= than the last (biggest) number of the array saves the binary search
         var index = Array.BinarySearch(integers, k);
         
