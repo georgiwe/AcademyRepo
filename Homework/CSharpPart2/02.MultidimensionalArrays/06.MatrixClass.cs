@@ -21,16 +21,7 @@ class Matrix
         set { matrixInstanceValues[row, col] = value; } // way to do it, since matrixInstanceValues is *private*.
         get { return matrixInstanceValues[row, col]; }
     }
-
-    /// <summary>
-    /// This method adds up the members of two instances of the Matrix class. 
-    /// Result matrix's rows and columns depend on the 
-    /// respective count in the input matrices.
-    /// Any new cells are filled with zeros.
-    /// </summary>
-    /// <param name="FirstMatrix"></param>
-    /// <param name="SecondMatrix"></param>
-    /// <returns>Returns a Matrix class </returns>
+    
     public static Matrix operator +(Matrix first, Matrix second)
     {
         int maxRows = Math.Max(first.Rows, second.Rows);
@@ -56,15 +47,6 @@ class Matrix
         return result;
     }
 
-    /// <summary>
-    /// This method subtracts the members of two instances of the Matrix class. 
-    /// Result matrix's rows and columns depend on the 
-    /// respective count in the input matrices.
-    /// Any new cells are filled with zeros.
-    /// </summary>
-    /// <param name="FirstMatrix"></param>
-    /// <param name="SecondMatrix"></param>
-    /// <returns>Returns a Matrix class </returns>
     public static Matrix operator -(Matrix first, Matrix second)
     {
         int maxRows = Math.Max(first.Rows, second.Rows);
@@ -90,15 +72,6 @@ class Matrix
         return result;
     }
 
-    /// <summary>
-    /// This method multiplies the members of two instances of the Matrix class. 
-    /// Result matrix's rows and columns depend on the 
-    /// respective count in the input matrices.
-    /// Any new cells are filled with zeros.
-    /// </summary>
-    /// <param name="FirstMatrix"></param>
-    /// <param name="SecondMatrix"></param>
-    /// <returns>Returns a Matrix class </returns>
     public static Matrix operator *(Matrix first, Matrix second)
     {
         int maxRows = Math.Max(first.Rows, second.Rows);
