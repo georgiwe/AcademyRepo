@@ -5,14 +5,14 @@ using System;
 
 class DefiningAclass
 {
-    // The Matrix class is in another .cs file in this same project folder!
+    // The Matrix class is in another .cs file in the same project folder!
 
     static void PrintMatrix(Matrix matrix)
     {
         for (int row = 0; row < matrix.Rows; row++)
         {
             for (int col = 0; col < matrix.Cols; col++)
-                Console.Write("{0," + -4 + "}", matrix[row, col]);
+                Console.Write("{0," + -5 + "}", matrix[row, col]);
 
             Console.WriteLine();
         }
@@ -35,7 +35,7 @@ class DefiningAclass
         GiveRndValues(firstMatrix);
         Console.WriteLine("Matrix ONE:\n");
         PrintMatrix(firstMatrix);
-        Matrix secondMatrix = new Matrix(3, 3);
+        Matrix secondMatrix = new Matrix(7, 3);
         GiveRndValues(secondMatrix);
         Console.WriteLine("Matrix TWO:\n");
         PrintMatrix(secondMatrix);
