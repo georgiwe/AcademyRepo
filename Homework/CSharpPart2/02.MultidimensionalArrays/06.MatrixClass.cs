@@ -132,9 +132,9 @@ class Matrix
         {
             for (int col = 0; col < Cols; col++)
             {
-                sb.Append(matrixInstanceValues[row, col].ToString());
+                sb.Append(matrixInstanceValues[row, col].ToString().PadRight(4, ' '));
                 if (col != Cols - 1) sb.Append(separator);
-                else sb.Append("\n"); // if the end of the row is reached, we "print" a new line
+                else sb.Append("\n");
             }
         }
 
