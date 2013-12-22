@@ -3,13 +3,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 class SortedSubarray
 {
     static void Main()
     {
-        int[] numbers = new int[] { 6, 1, 4, 3, 0, 3, 6, 4, 5 };
+        int[] numbers = new int[] { 6, 1, 4, 3, 0, 3, 6, 4, 5, -5, -4, -3, -2, -1 };
 
         var allSortedSubarrays = new List<List<int>>(); // stores all sorted subarrays
         var subarrayWithMaxLength = new List<int>(); // stores the sorted array with maximum length
@@ -27,7 +28,7 @@ class SortedSubarray
 
             if (subarray.SequenceEqual(subarraySorted) &&       // .SequenceEqual() checks if... the two 
                 subarray.Count > 1 &&                           // sequences are equal. Element by element.
-                subarray.Count > subarrayWithMaxLength.Count)   // It's part of LINQ. Could also do it with a loop.
+                subarray.Count >= subarrayWithMaxLength.Count)   // It's part of LINQ. Could also do it with a loop.
             {
                 subarrayWithMaxLength = subarray;
                 allSortedSubarrays.Add(subarray);
@@ -35,7 +36,7 @@ class SortedSubarray
         }
 
         for (int i = 0; i < allSortedSubarrays.Count; i++)
-            if (allSortedSubarrays[i].Count == subarrayWithMaxLength.Count)  // prints all the sorted subarrays
-                Console.WriteLine(String.Join(", ", allSortedSubarrays[i])); // which have the same length as the max
+            if (allSortedSubarrays[i].Count == subarrayWithMaxLength.Count)
+                Console.WriteLine(String.Join(", ", allSortedSubarrays[i]));
     }
 }
