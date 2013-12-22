@@ -35,7 +35,7 @@ class SortedSubarray
         }
 
         for (int i = 0; i < allSortedSubarrays.Count; i++)
-            if (allSortedSubarrays[i].Count == subarrayWithMaxLength.Count)
-                Console.WriteLine(String.Join(", ", allSortedSubarrays[i]));
+            if (allSortedSubarrays[i].Count == subarrayWithMaxLength.Count)  // prints all the subarrays
+                Console.WriteLine(String.Join(", ", allSortedSubarrays[i])); // which have the same length as the max
     }
 }
