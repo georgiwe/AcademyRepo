@@ -10,26 +10,24 @@ class BigNums
     {
         int padTo = Math.Max(firstStr.Length, secondStr.Length);
         firstStr = firstStr.PadLeft(padTo, '0');
-        secondStr = secondStr.PadLeft(padTo, '0');
-
-        char[] firstChar = firstStr.ToCharArray();    // maybe this should
-        Array.Reverse(firstChar);                     // have been inside
-        char[] secondChar = secondStr.ToCharArray();  // the Main method?
-        Array.Reverse(secondChar);                    // I can do this, cause 
-                                                      // it is said that
-        int[] first = new int[firstChar.Length];      // we only need to add up
-        int[] second = new int[secondChar.Length];    // positive numbers
-
+        secondStr = secondStr.PadLeft(padTo, '0');   
+                                                        
+        int[] first = new int[firstStr.Length];     // maybe this should
+        int[] second = new int[secondStr.Length];   // have been inside
+                                                    // the Main method?
         for (int i = 0; i < padTo; i++)
-        {
-            first[i] = (int)firstChar[i] - 48; // cast for readability :P
-            second[i] = (int)secondChar[i] - 48;
-        }
+        {                                           // I can do this, because 
+            first[i] = (int)firstStr[i] - 48;       // it is said that
+            second[i] = (int)secondStr[i] - 48;     // we only need to add up
+        }                                           // positive integers
+
+        Array.Reverse(first);
+        Array.Reverse(second);
 
         int[] result = new int[padTo + 1];
         int carryOver = 0;
 
-        for (int i = 0; i < padTo; i++)
+        for (int i = 0; i < Math.Min(first.Length, second.Length); i++)
         {
             result[i] = (first[i] + second[i] + carryOver) % 10;
             carryOver = (first[i] + second[i] + carryOver - result[i]) / 10;
