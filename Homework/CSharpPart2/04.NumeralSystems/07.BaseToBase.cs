@@ -12,6 +12,8 @@ class BaseToBase
 
     static string ConvFromBaseToBase(string number, int fromBase, int toBase)
     {
+        if (fromBase == toBase) return number;
+
         string result = "";
         long decResult = 0;
         char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
