@@ -28,7 +28,7 @@ class BaseToBase
                          'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', };
 
         for (int i = number.Length - 1; i >= 0; i--)
-            if (number[i] == '0') continue;
+            if (number[i] == '0') continue; // Small optimization - no calculations for zeros.
             else if (number[i] >= 'A') decResult += (number[i] - 55) * (long)BinToDec.Pow(fromBase, number.Length - 1 - i);
             else decResult += (number[i] - 48) * (long)BinToDec.Pow(fromBase, number.Length - 1 - i);
 
