@@ -8,13 +8,13 @@ class BaseToBase
     static void Main()
     {
         Console.Write("Enter the number you want converted: ");
-        string number = Console.ReadLine();
+        string number = Console.ReadLine().TrimStart('0').ToUpper();
         Console.Write("Enter its initial base (2 - 36): ");
         int fromBase = int.Parse(Console.ReadLine());
         Console.Write("Enter the desired output base (2 - 36): ");
         int toBase = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("The result is: \"{0}\".", ConvFromBaseToBase(number.TrimStart('0').ToUpper(), fromBase, toBase));
+        Console.WriteLine("The result is: \"{0}\".", ConvFromBaseToBase(number, fromBase, toBase));
         Console.WriteLine();
     }
 
