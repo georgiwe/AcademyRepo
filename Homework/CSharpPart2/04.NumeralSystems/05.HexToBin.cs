@@ -23,7 +23,7 @@ class HexToBin
             addition = "";
             while (value != 0) // converts the number into binary
             {
-                addition = (value & 1).ToString() + addition;
+                addition = (value & 1) + addition;
                 value >>= 1;
             }
 
