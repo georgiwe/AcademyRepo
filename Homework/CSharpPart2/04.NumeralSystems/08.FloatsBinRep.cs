@@ -4,10 +4,11 @@ class FloatBinRep
 {
     static void Main()
     {
-        float number = -43319.3109f;
+        string input = Console.ReadLine();
+        float number = float.Parse(input);
 
         string result = number >= 0 ? "0" : "1";
-
+        
         if (number < 0) number = -number;
 
         string intPartBin = GetBinaryInt((int)number);
@@ -18,6 +19,11 @@ class FloatBinRep
                                                // Adding the mantissa
         if (intPartBin != "0") result += " " + (intPartBin + floPartBin).Substring(1).PadRight(23, '0');
         else result += " " + (intPartBin + floPartBin).Substring(floPartBin.IndexOf('1') + 2).PadRight(23, '0');
+
+        // If the number entered is 0, we differentiate between "-0" and "0", as per IEEE754.
+        if (intPartBin == "0" && floPartBin == "0") result = new string('0', 8) + " " + new string('0', 23);
+        if (input[0] == '-' && intPartBin == "0" && floPartBin == "0") result = '1' + result;
+        else if (input[0] != '-' && intPartBin == "0" && floPartBin == "0") result = '0' + result;
 
         Console.WriteLine("S E\t   M");
         Console.WriteLine(result);
