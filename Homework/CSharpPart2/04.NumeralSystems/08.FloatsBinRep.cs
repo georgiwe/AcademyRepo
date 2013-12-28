@@ -4,9 +4,12 @@ class FloatBinRep
 {
     static void Main()
     {
-        string input = Console.ReadLine();
-        float number = float.Parse(input);
+        string input = Console.ReadLine().ToLower(); // IEE754 supports the next 3 "special values".
+        if (input == "nan") { Console.WriteLine("S E\t   M\n0 11111111 11111111111111111111111"); return; }
+        else if (input == "infinity") { Console.WriteLine("S E\t   M\n0 11111111 00000000000000000000000"); return; }
+        else if (input == "-infinity") { Console.WriteLine("S E\t   M\n1 11111111 00000000000000000000000"); return; }
 
+        float number = float.Parse(input);
         string result = number >= 0 ? "0" : "1";
         
         if (number < 0) number = -number;
@@ -25,8 +28,7 @@ class FloatBinRep
         if (input[0] == '-' && intPartBin == "0" && floPartBin == "0") result = '1' + result;
         else if (input[0] != '-' && intPartBin == "0" && floPartBin == "0") result = '0' + result;
 
-        Console.WriteLine("S E\t   M");
-        Console.WriteLine(result);
+        Console.WriteLine("S E\t   M\n" + result);
     }
 
     static string GetBinaryInt(int num)
