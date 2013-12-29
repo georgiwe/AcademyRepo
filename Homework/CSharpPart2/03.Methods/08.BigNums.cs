@@ -12,9 +12,9 @@ class BigNums
         firstStr = firstStr.PadLeft(padTo, '0');
         secondStr = secondStr.PadLeft(padTo, '0');   
                                                         
-        int[] first = new int[firstStr.Length];     // maybe this should
-        int[] second = new int[secondStr.Length];   // have been inside
-                                                    // the Main method?
+        int[] first = new int[firstStr.Length];
+        int[] second = new int[secondStr.Length];
+
         for (int i = 0; i < padTo; i++)
         {                                           // I can do this, because 
             first[i] = (int)firstStr[i] - 48;       // it is said that
@@ -30,7 +30,7 @@ class BigNums
         for (int i = 0; i < Math.Min(first.Length, second.Length); i++)
         {
             result[i] = (first[i] + second[i] + carryOver) % 10;
-            carryOver = (first[i] + second[i] + carryOver - result[i]) / 10;
+            carryOver = (first[i] + second[i] + carryOver) / 10;
         }
 
         result[Math.Min(first.Length, second.Length)] += carryOver;
