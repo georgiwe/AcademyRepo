@@ -35,7 +35,7 @@ class Workdays
         int subtractedDays = 0;
         if (end.DayOfWeek == DayOfWeek.Sunday) // We cout only full days, so no need to remove Saturdays.
         {                                      // We skip Saturdays with the 00:00 and on Mondays,
-            end = end.AddDays(-1); // Subtracts one day.        // we have already removed the two days.
+            end = end.AddDays(-1); // Subtracts one day.        // we have already removed the two weekend days.
             subtractedDays += 1;   // We remember how many days we subtracted,
         }                          // in order to display the right date in the end.
 
