@@ -51,7 +51,8 @@ class Workdays
                 holidays[i] = new DateTime(holidays[i].Year + 1, holidays[i].Month, holidays[i].Day);
 
                 if (holidays[i] <= end && holidays[i] >= start &&
-                    holidays[i].DayOfWeek != DayOfWeek.Saturday && holidays[i].DayOfWeek != DayOfWeek.Sunday)
+                    holidays[i].DayOfWeek != DayOfWeek.Saturday && 
+                    holidays[i].DayOfWeek != DayOfWeek.Sunday)
                         Console.Write("\n{0:MMM dd, yyyy} has been excluded as a holiday.", holidays[i], resultDays--);
             }
 
