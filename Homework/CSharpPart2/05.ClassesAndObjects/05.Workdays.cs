@@ -10,9 +10,9 @@ class Workdays
     static void Main()
     {
         CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
-        DateTime now = DateTime.Now;
         Console.WriteLine("Enter Year, Month and Day - each on a separate line:");
-        DateTime then = new DateTime(
+        DateTime now = DateTime.Now.Date; // Set the time to 00:00:00 o'clock,
+        DateTime then = new DateTime(     // so we compare equal days and can use ints.
             int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()));
 
         GetWorkdaysBetween(now, then);
@@ -22,35 +22,43 @@ class Workdays
     {
         if (start > end) { Console.WriteLine("Erroneous input!"); return; }
 
-        start = new DateTime(start.Year, start.Month, start.Day); // Set the time to 00:00:00 o'clock,
-                                                                  // so we compare equal days and can use ints.
         DateTime[] holidays = {
-        new DateTime(2014,  1,  1),
-        new DateTime(2014,  3,  3),
-        new DateTime(2014,  5,  6),
-        new DateTime(2014,  5, 24),
-        new DateTime(2014, 10,  9), }; // My birthday, obv. 
-                                                                               // If it is Sat/Sun, we
-        if (start.DayOfWeek == DayOfWeek.Saturday) start = start.AddDays(2);   // start counting from the
-        else if (start.DayOfWeek == DayOfWeek.Sunday) start = start.AddDays(1);// first upcoming Monday.
+        new DateTime(start.Year,  1,  1),
+        new DateTime(start.Year,  3,  3),
+        new DateTime(start.Year,  5,  6),
+        new DateTime(start.Year,  5, 24),
+        new DateTime(start.Year, 10,  9), }; // My birthday, obv. 
+                                                                                // If it is Sat/Sun, we
+        if (start.DayOfWeek == DayOfWeek.Saturday) start = start.AddDays(2);    // start counting from the
+        else if (start.DayOfWeek == DayOfWeek.Sunday) start = start.AddDays(1); // first upcoming Monday.
 
         int subtractedDays = 0;
-        if (end.DayOfWeek == DayOfWeek.Sunday) // Don't count Sundays.
-        {
-            end = end.Subtract(new TimeSpan(1, 0, 0, 0)); // Subtracts one day.
-            subtractedDays += 1; // We remember how many days we subtracted,
-        }                        // in order to display the right date in the end.
+        if (end.DayOfWeek == DayOfWeek.Sunday) // We cout only full days, so no need to remove Saturdays.
+        {                          // Subtracts one day.
+            end = end.AddDays(-1); // We remember how many days we subtracted,
+            subtractedDays += 1;   // in order to display the right date in the end.
+        }                          
 
         int daysBetweenDates = (int)end.Subtract(start).TotalDays;
         int resultDays = 0;
 
         resultDays = daysBetweenDates - ((daysBetweenDates / 7) * 2);
-        
-        for (int i = 0; i < holidays.Length; i++)
-            if (holidays[i] < end && holidays[i] > start)
-                Console.Write("\n{0:MMM, dd} has been excluded as a holiday.", holidays[i], resultDays--);
 
-        Console.WriteLine("\n\nThere are {0} workdays until {1:dd.MM.yyyy HH:mm:ss}.", resultDays, end.AddDays(subtractedDays));
+        for (int y = 0; y <= end.Year - start.Year; y++)
+        {
+            for (int i = 0; i < holidays.Length; i++)
+            {
+                holidays[i] = new DateTime(holidays[i].Year + 1, holidays[i].Month, holidays[i].Day);
+
+                if (holidays[i] <= end && holidays[i] >= start &&
+                    holidays[i].DayOfWeek != DayOfWeek.Saturday && holidays[i].DayOfWeek != DayOfWeek.Sunday)
+                        Console.Write("\n{0:MMM dd, yyyy} has been excluded as a holiday.", holidays[i], resultDays--);
+            }
+
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("\nThere are {0} workdays until {1:dd.MM.yyyy HH:mm:ss}.", resultDays, end.AddDays(subtractedDays));
         Console.WriteLine("(Meaning {0:MMM, dd, yyyy} is not counted.)\n", end.AddDays(subtractedDays));
     }
 }
