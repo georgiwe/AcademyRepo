@@ -34,10 +34,10 @@ class Workdays
 
         int subtractedDays = 0;
         if (end.DayOfWeek == DayOfWeek.Sunday) // We cout only full days, so no need to remove Saturdays.
-        {                          // Subtracts one day.
-            end = end.AddDays(-1); // We remember how many days we subtracted,
-            subtractedDays += 1;   // in order to display the right date in the end.
-        }                          
+        {                                      // We skip Saturdays with the 00:00 and on Mondays,
+            end = end.AddDays(-1); // Subtracts one day.        // we have already removed the two days.
+            subtractedDays += 1;   // We remember how many days we subtracted,
+        }                          // in order to display the right date in the end.
 
         int daysBetweenDates = (int)end.Subtract(start).TotalDays;
         int resultDays = 0;
@@ -51,8 +51,7 @@ class Workdays
                 holidays[i] = new DateTime(holidays[i].Year + 1, holidays[i].Month, holidays[i].Day);
 
                 if (holidays[i] <= end && holidays[i] >= start &&
-                    holidays[i].DayOfWeek != DayOfWeek.Saturday && 
-                    holidays[i].DayOfWeek != DayOfWeek.Sunday)
+                    holidays[i].DayOfWeek != DayOfWeek.Saturday && holidays[i].DayOfWeek != DayOfWeek.Sunday)
                         Console.Write("\n{0:MMM dd, yyyy} has been excluded as a holiday.", holidays[i], resultDays--);
             }
 
