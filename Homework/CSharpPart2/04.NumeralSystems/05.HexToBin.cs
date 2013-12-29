@@ -27,7 +27,7 @@ class HexToBin
                 value >>= 1;
             }
 
-            result = addition.PadLeft(4, '0') + result; // padds the binary representation of the digit
+            result = addition.PadLeft(4, '0') + result; // pads the binary representation of the digit
         }                                               // and adds it to the left of the binary number so far
 
         return result.TrimStart('0');
