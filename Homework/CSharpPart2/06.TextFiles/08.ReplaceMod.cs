@@ -27,7 +27,7 @@ class ReplaceModification
                     (!char.IsLetterOrDigit(line[index - 1]) &&                 // if the chars on each side of
                     !char.IsLetterOrDigit(line[index + wordWeSeek.Length]))))  // the word are not 
                 {   // This produces a new string, with the words exchanged    // letters or digits.
-                    line = string.Join(line.Substring(0, index), wordWeSubWith, line.Substring(index + wordWeSeek.Length));
+                    line = string.Join("", line.Substring(0, index), wordWeSubWith, line.Substring(index + wordWeSeek.Length));
                 }
 
                 index = line.IndexOf("start", index + 1);
