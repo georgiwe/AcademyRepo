@@ -16,7 +16,7 @@ class ReplaceModification
 
         while (line != null)
         {
-            int index = line.IndexOf("start");
+            int index = line.ToLowe().IndexOf("start");
 
             while (index != -1)
             {
@@ -30,7 +30,7 @@ class ReplaceModification
                     line = string.Join("", line.Substring(0, index), wordWeSubWith, line.Substring(index + wordWeSeek.Length));
                 }
 
-                index = line.IndexOf("start", index + 1);
+                index = line.ToLowe().IndexOf("start", index + 1);
             }
 
             writer.WriteLine(line);
