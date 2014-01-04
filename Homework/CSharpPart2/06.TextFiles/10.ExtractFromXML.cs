@@ -8,10 +8,15 @@ class ExtractFromXML
 {
     static void Main()
     {
-        string text = File.ReadAllText("xml.txt");
+        string fileData = File.ReadAllText("xml.txt");
+        string searchPattern = @">[^(<.*>)]+?<";
 
-        MatchCollection matches = Regex.Matches(text, @">[^(<.*>)]+?<", RegexOptions.IgnoreCase);
+        // Creates an IEnumerable object of class MatchCollection, which contains all the
+        // objects of class Match, which contain info (the value, index and so on) about
+        // all matches of the pattern, found in the file text.
+        MatchCollection matches = Regex.Matches(fileData, searchPattern);
 
-        foreach (Match match in matches) Console.WriteLine(match.Value.Trim(' ', '<', '>'));
+        foreach (Match match in matches) 
+            Console.WriteLine(match.Value.Trim(' ', '<', '>'));
     }
 }
