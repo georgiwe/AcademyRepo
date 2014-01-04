@@ -8,7 +8,7 @@ class ExtractFromXML
 {
     static void Main()
     {
-        string text = File.ReadAllText("xml.txt");
+        string text = File.ReadAllText("someXML.txt");
 
         MatchCollection matches = Regex.Matches(text, @">\s*\w+\s*<", RegexOptions.IgnoreCase);
 
