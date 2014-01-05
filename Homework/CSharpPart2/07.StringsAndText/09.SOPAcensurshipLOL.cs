@@ -15,10 +15,10 @@ class CensurshipSOPAwhuuut
         string rawForbWords = "PHP, CLR, Microsoft";
         
         // Extract only words from the string.
-        string[] forbWords = rawForbWords.Split(", ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+        string[] forbWords = rawForbWords.Split(", \n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
         string pattern = String.Join("|", forbWords); // Join them so they form a Regex pattern to search with.
         
-        // Find all matches of all words through the text.
+        // Find all matches of all forbidden words throughout the text.
         MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase);
 
         var used = new List<string>(); // This will hold every word that we
