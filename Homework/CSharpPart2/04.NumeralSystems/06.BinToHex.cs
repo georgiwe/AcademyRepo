@@ -20,7 +20,7 @@ class BinToHex
 
         for (int i = 0; i < bin.Length; i += 4) // Cycle through the segments with length 4.
         {
-            string addition = new string(bin.ToCharArray(), i, 4); // Extracts a string with length 4 from "bin".
+            string addition = bin.Substring(i, 4); // Extracts a string with length 4 from "bin".
             int currResult = 0; // Keeps the current number, delivered from the abovementioned binary number.
 
             for (int ii = addition.Length - 1; ii >= 0; ii--) // Gets each digit of the binary segment,
