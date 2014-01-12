@@ -29,7 +29,6 @@ class GenomeDecoder
         int numOfLinesLen = numOfLines.ToString().Length;
 
         var lines = new List<string>();
-        var line = new StringBuilder(n);
 
         MatchCollection matches = Regex.Matches(decStr, @"[A-Z]{" + n + "}");
 
