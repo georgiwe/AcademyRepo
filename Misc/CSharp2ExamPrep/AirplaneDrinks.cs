@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-class Program
+class AirplaneDrinks
 {
     static long moves = 0;
     static int drinksLeft = 0;
@@ -12,7 +12,7 @@ class Program
         int totSeats = int.Parse(Console.ReadLine());
         int teaDrinkers = int.Parse(Console.ReadLine());
 
-        byte[] all = new byte[totSeats + 1];
+        var all = new byte[totSeats + 1];
         var tea = new List<int>(teaDrinkers);
 
         for (int i = 0; i < teaDrinkers; i++)
@@ -24,13 +24,11 @@ class Program
         }
 
         tea.Sort();
-
         FillFlask(currLoc);
 
         for (int i = all.Length - 1; i >= 1; i--)
         {
             if (all[i] > 0) continue;
-
             if (drinksLeft == 0) FillFlask(currLoc);
 
             Serve(currLoc, i);
