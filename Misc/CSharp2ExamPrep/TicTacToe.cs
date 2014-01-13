@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-class TestArea2
+class TicTacToe
 {
     static int xWin = 0;
     static int oWin = 0;
