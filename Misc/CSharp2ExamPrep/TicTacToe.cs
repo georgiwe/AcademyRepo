@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-class Program
+class TestArea2
 {
     static int xWin = 0;
     static int oWin = 0;
-    static int draw = 0;
+    static int draws = 0;
 
     static void Main()
     {
@@ -14,23 +14,17 @@ class Program
 
         char[][] field = new char[3][];
 
-        var emptyCoords = new List<int[]>();
+        var empties = new List<int[]>();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < field.Length; i++)
         {
             field[i] = Console.ReadLine().ToCharArray();
 
             for (int j = 0; j < field[i].Length; j++)
-                if (field[i][j] == '-') emptyCoords.Add(new int[]{ i, j });
+                if (field[i][j] == '-') empties.Add(new int[] { i, j });
         }
 
-        bool xToAct = true;
-
-        if (emptyCoords.Count % 2 == 0) xToAct = false;
-
-        Solve(field, xToAct, emptyCoords);
-
-        if (emptyCoords.Count == 9)
+        if (empties.Count == 9)
         {
             Console.WriteLine(131184);
             Console.WriteLine(46080);
@@ -38,145 +32,69 @@ class Program
             return;
         }
 
+        bool xToAct = empties.Count % 2 != 0;
+
+        Solve(field, empties, xToAct);
+
         Console.WriteLine(xWin);
-        Console.WriteLine(draw);
+        Console.WriteLine(draws);
         Console.WriteLine(oWin);
     }
 
-    static void Solve(char[][] field, bool xToAct, List<int[]> empties, int start = 0)
+    static void Solve(char[][] field, List<int[]> empties, bool xToAct)
     {
-        if (empties.Count == 0) 
-        {
-            if (CheckForWin(field) == 0) draw++;
-            else if (CheckForWin(field) == 1) xWin++;
-            else if (CheckForWin(field) == 2) oWin++;
-            return;
-        }
+        if (empties.Count == 0) { draws++; return; } // add scoring?
 
         char symb = xToAct ? 'X' : 'O';
 
-        char[][] newField = new char[3][];
-        Array.Copy(field, newField, 3);
-
-        for (int i = start; i < empties.Count; i++)
+        for (int i = 0; i < empties.Count; i++)
         {
             int row = empties[i][0];
             int col = empties[i][1];
 
-            newField[row][col] = symb;
+            field[row][col] = symb;
 
-            bool win = empties.Count < 6 ? AwardWins(newField, row, col, i, empties) : false;
+            bool haveWin = CheckForWin(field);
+            if (haveWin)
+            {
+                if (xToAct) xWin++;
+                else if (!xToAct) oWin++;
+            }
+            else
+            {
+                empties.RemoveAt(i);
 
-            var newEmpties = new List<int[]>(empties);
-            newEmpties.RemoveAt(i);
+                if (haveWin == false) Solve(field, empties, !xToAct);
 
-            if (win == false) Solve(newField, !xToAct, newEmpties); // add start maybe
+                empties.Insert(i, new int[] { row, col });
+            }
 
-            newField[row][col] = '-';
+            field[row][col] = '-';
         }
     }
 
-    static void Draw(char[][] field)
+    private static bool CheckForWin(char[][] field)
     {
-        for (int row = 0; row < field.Length; row++)
+        if ((field[0][0] == field[0][1] && field[0][0] == field[0][2] && field[0][0] != '-') ||
+            (field[1][0] == field[1][1] && field[1][0] == field[1][2] && field[1][0] != '-') ||
+            (field[2][0] == field[2][1] && field[2][0] == field[2][2] && field[2][0] != '-'))
         {
-            Console.WriteLine(String.Join("", field[row]));
-        }
-
-        Console.WriteLine();
-    }
-
-    static bool AwardWins(char[][] field, int row, int col, int i, List<int[]> empties)
-    {
-        int winner = CheckForWin(field);
-        if (winner == 1)
-        {
-            xWin++;
             return true;
         }
-        else if (winner == 2)
+
+        if ((field[0][0] == field[1][0] && field[0][0] == field[2][0] && field[0][0] != '-') ||
+            (field[0][1] == field[1][1] && field[0][1] == field[2][1] && field[0][1] != '-') ||
+            (field[0][2] == field[1][2] && field[0][2] == field[2][2] && field[0][2] != '-'))
         {
-            oWin++;
+            return true;
+        }
+
+        if ((field[0][0] == field[1][1] && field[0][0] == field[2][2] && field[0][0] != '-') ||
+            (field[0][2] == field[1][1] && field[0][2] == field[2][0] && field[0][2] != '-'))
+        {
             return true;
         }
 
         return false;
-    }
-
-    static int CheckForWin(char[][] field)
-    {
-        int winner = 0;
-
-        char currRes = CheckCols(field);
-        if (currRes == 'X') winner = 1;
-        else if (currRes == 'O') winner = 2;
-
-        currRes = CheckRows(field);
-        if (currRes == 'X') winner = 1;
-        else if (currRes == 'O') winner = 2;
-
-        currRes = CheckDiags(field);
-        if (currRes == 'X') winner = 1;
-        else if (currRes == 'O') winner = 2;
-
-        return winner;
-    }
-
-    static char CheckDiags(char[][] field)
-    {
-        if (field[0][0] == field[1][1] &&
-            field[1][1] == field[2][2])
-        {
-            return field[0][0];
-        }
-        if (field[0][2] == field[1][1] &&
-            field[2][0] == field[1][1])
-        {
-            return field[0][2];
-        }
-
-        return '0';
-    }
-
-    static char CheckRows(char[][] field)
-    {
-        if (field[0][0] == field[0][1] &&
-            field[0][1] == field[0][2])
-        {
-            return field[0][0];
-        }
-        if (field[1][0] == field[1][1] &&
-            field[1][1] == field[1][2])
-        {
-            return field[1][0];
-        }
-        if (field[2][0] == field[2][1] &&
-            field[2][1] == field[2][2])
-        {
-            return field[2][0];
-        }
-
-        return '0';
-    }
-
-    static char CheckCols(char[][] field)
-    {
-        if (field[0][0] == field[1][0] &&
-            field[1][0] == field[2][0])
-        {
-            return field[0][0];
-        }
-        if (field[0][1] == field[1][1] &&
-            field[1][1] == field[2][1])
-        {
-            return field[0][1];
-        }
-        if (field[0][2] == field[1][2] &&
-            field[1][2] == field[2][2])
-        {
-            return field[0][2];
-        }
-
-        return '0';
     }
 }
