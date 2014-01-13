@@ -10,8 +10,6 @@ class TestArea2
 
     static void Main()
     {
-        if (File.Exists("inpp.txt")) Console.SetIn(new StreamReader("inpp.txt"));
-
         char[][] field = new char[3][];
 
         var empties = new List<int[]>();
@@ -43,7 +41,7 @@ class TestArea2
 
     static void Solve(char[][] field, List<int[]> empties, bool xToAct)
     {
-        if (empties.Count == 0) { draws++; return; } // add scoring?
+        if (empties.Count == 0) { draws++; return; }
 
         char symb = xToAct ? 'X' : 'O';
 
@@ -54,8 +52,7 @@ class TestArea2
 
             field[row][col] = symb;
 
-            bool haveWin = CheckForWin(field);
-            if (haveWin)
+            if (CheckForWin(field))
             {
                 if (xToAct) xWin++;
                 else if (!xToAct) oWin++;
@@ -64,7 +61,7 @@ class TestArea2
             {
                 empties.RemoveAt(i);
 
-                if (haveWin == false) Solve(field, empties, !xToAct);
+                Solve(field, empties, !xToAct);
 
                 empties.Insert(i, new int[] { row, col });
             }
@@ -75,26 +72,15 @@ class TestArea2
 
     private static bool CheckForWin(char[][] field)
     {
-        if ((field[0][0] == field[0][1] && field[0][0] == field[0][2] && field[0][0] != '-') ||
-            (field[1][0] == field[1][1] && field[1][0] == field[1][2] && field[1][0] != '-') ||
-            (field[2][0] == field[2][1] && field[2][0] == field[2][2] && field[2][0] != '-'))
-        {
-            return true;
-        }
+        return ((field[0][0] == field[0][1] && field[0][0] == field[0][2] && field[0][0] != '-') ||
+                (field[1][0] == field[1][1] && field[1][0] == field[1][2] && field[1][0] != '-') ||
+                (field[2][0] == field[2][1] && field[2][0] == field[2][2] && field[2][0] != '-') ||
 
-        if ((field[0][0] == field[1][0] && field[0][0] == field[2][0] && field[0][0] != '-') ||
-            (field[0][1] == field[1][1] && field[0][1] == field[2][1] && field[0][1] != '-') ||
-            (field[0][2] == field[1][2] && field[0][2] == field[2][2] && field[0][2] != '-'))
-        {
-            return true;
-        }
+                (field[0][0] == field[1][0] && field[0][0] == field[2][0] && field[0][0] != '-') ||
+                (field[0][1] == field[1][1] && field[0][1] == field[2][1] && field[0][1] != '-') ||
+                (field[0][2] == field[1][2] && field[0][2] == field[2][2] && field[0][2] != '-') ||
 
-        if ((field[0][0] == field[1][1] && field[0][0] == field[2][2] && field[0][0] != '-') ||
-            (field[0][2] == field[1][1] && field[0][2] == field[2][0] && field[0][2] != '-'))
-        {
-            return true;
-        }
-
-        return false;
+                (field[0][0] == field[1][1] && field[0][0] == field[2][2] && field[0][0] != '-') ||
+                (field[0][2] == field[1][1] && field[0][2] == field[2][0] && field[0][2] != '-'));
     }
 }
