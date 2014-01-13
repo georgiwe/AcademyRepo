@@ -22,14 +22,6 @@ class TestArea2
                 if (field[i][j] == '-') empties.Add(new int[] { i, j });
         }
 
-        if (empties.Count == 9)
-        {
-            Console.WriteLine(131184);
-            Console.WriteLine(46080);
-            Console.WriteLine(77904);
-            return;
-        }
-
         bool xToAct = empties.Count % 2 != 0;
 
         Solve(field, empties, xToAct);
