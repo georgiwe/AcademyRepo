@@ -167,12 +167,12 @@ class Program
             return field[0][0];
         }
         if (field[0][1] == field[1][1] &&
-                field[1][1] == field[2][1])
+            field[1][1] == field[2][1])
         {
             return field[0][1];
         }
         if (field[0][2] == field[1][2] &&
-                 field[1][2] == field[2][2])
+            field[1][2] == field[2][2])
         {
             return field[0][2];
         }
