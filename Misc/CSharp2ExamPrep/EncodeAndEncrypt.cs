@@ -24,7 +24,7 @@ class EncodeAndEncrypt
 
         for (int i = 0, cypInd = 0, msgInd = 0; i < longer; i++)
         {
-            int msgCode = 0;
+            int msgCode;
 
             if (result.Length < message.Length) msgCode = message[msgInd++] - 'A';
             else msgCode = result[msgInd] - 'A';
