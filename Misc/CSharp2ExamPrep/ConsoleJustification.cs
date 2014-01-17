@@ -3,20 +3,21 @@ using System.Text;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-class TestArea
+class ConsoleJustification
 {
     static void Main()
     {
-        int lines = int.Parse(Console.ReadLine());
+        int numOfLines = int.Parse(Console.ReadLine());
         int width = int.Parse(Console.ReadLine());
 
-        var input = new StringBuilder(lines);
+        var input = new StringBuilder(numOfLines);
 
-        for (int i = 0; i < lines; i++) input.AppendLine(Console.ReadLine());
+        for (int i = 0; i < numOfLines; i++) input.AppendLine(Console.ReadLine());
 
-        string[] words = input.ToString().Trim(' ', '\n', '\r').Split(" \n\r".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+        string[] words = input.ToString().Trim(' ', '\n', '\r').Split(
+            "\n \r".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
-        var linez = new List<string>(lines);
+        var lines = new List<string>(numOfLines);
 
         for (int i = 0, wInd = 0; wInd < words.Length; i++)
         {
@@ -34,28 +35,28 @@ class TestArea
                 else break;
             }
 
-            if (currLine.Length > 0) linez.Add(currLine.ToString().TrimEnd(' '));
+            if (currLine.Length > 0) lines.Add(currLine.ToString().TrimEnd(' '));
         }
 
-        for (int i = 0; i < linez.Count; i++)
+        for (int i = 0; i < lines.Count; i++)
         {
-            while (linez[i].Length < width)
+            while (lines[i].Length < width)
             {
-                int startInd = 0;
-                var currLine = new StringBuilder(linez[i]);
+                int indexOffset = 0;
+                var currLine = new StringBuilder(lines[i]);
 
-                MatchCollection spaces = Regex.Matches(linez[i], @"\s+");
+                MatchCollection spaces = Regex.Matches(lines[i], @"\s+");
 
                 if (spaces.Count == 0) break;
 
                 foreach (Match space in spaces)
-                    if (currLine.Length < width) currLine.Insert(space.Index + startInd++, ' ');
+                    if (currLine.Length < width) currLine.Insert(space.Index + indexOffset++, ' ');
                     else break;
 
-                linez[i] = currLine.ToString();
+                lines[i] = currLine.ToString();
             }
         }
 
-        for (int i = 0; i < linez.Count; i++) Console.WriteLine(linez[i]);
+        for (int i = 0; i < lines.Count; i++) Console.WriteLine(lines[i]);
     }
 }
