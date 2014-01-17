@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-class TestArea
+class Slides
 {
     static List<string> commands = new List<string>();
     static int[] pos = new int[3];
@@ -15,6 +15,7 @@ class TestArea
     static void Main()
     {
         string[] input = Console.ReadLine().Split();
+        
         width = int.Parse(input[0]);
         height = int.Parse(input[1]);
         depth = int.Parse(input[2]);
@@ -71,14 +72,9 @@ class TestArea
 
     static bool IsInside()
     {
-        if (newPos[0] >= width ||
-            newPos[0] < 0 ||
-            newPos[1] >= height ||
-            newPos[1] < 0 ||
-            newPos[2] >= depth ||
-            newPos[2] < 0) return false;
-
-        return true;
+        if (   newPos[0] == width || newPos[0] < 0
+           || newPos[1] == height || newPos[1] < 0
+           ||  newPos[2] == depth || newPos[2] < 0) return false;
     }
 
     private static void Teteport(string cellValue)
