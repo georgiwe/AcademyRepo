@@ -8,7 +8,7 @@ class ConsoleJustification
     static void Main()
     {
         int numOfLines = int.Parse(Console.ReadLine());
-        int width = int.Parse(Console.ReadLine());
+        int lineWidth = int.Parse(Console.ReadLine());
 
         var input = new StringBuilder(numOfLines);
 
@@ -21,13 +21,13 @@ class ConsoleJustification
 
         for (int i = 0, wInd = 0; wInd < words.Length; i++)
         {
-            var currLine = new StringBuilder(width);
+            var currLine = new StringBuilder(lineWidth);
 
-            while (currLine.Length < width && wInd < words.Length)
+            while (currLine.Length < lineWidth && wInd < words.Length)
             {
                 string currWord = words[wInd];
 
-                if (currLine.Length + currWord.Length <= width)
+                if (currLine.Length + currWord.Length <= lineWidth)
                 {
                     currLine.Append(currWord + ' ');
                     wInd++;
@@ -40,7 +40,7 @@ class ConsoleJustification
 
         for (int i = 0; i < lines.Count; i++)
         {
-            while (lines[i].Length < width)
+            while (lines[i].Length < lineWidth)
             {
                 int indexOffset = 0;
                 var currLine = new StringBuilder(lines[i]);
@@ -50,7 +50,7 @@ class ConsoleJustification
                 if (spaces.Count == 0) break;
 
                 foreach (Match space in spaces)
-                    if (currLine.Length < width) currLine.Insert(space.Index + indexOffset++, ' ');
+                    if (currLine.Length < lineWidth) currLine.Insert(space.Index + indexOffset++, ' ');
                     else break;
 
                 lines[i] = currLine.ToString();
