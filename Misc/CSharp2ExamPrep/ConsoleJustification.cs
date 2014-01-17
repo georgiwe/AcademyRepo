@@ -19,18 +19,18 @@ class ConsoleJustification
 
         var lines = new List<string>(numOfLines);
 
-        for (int i = 0, wInd = 0; wInd < words.Length; i++)
+        for (int i = 0, wordsInd = 0; wordsInd < words.Length; i++)
         {
             var currLine = new StringBuilder(lineWidth);
 
-            while (currLine.Length < lineWidth && wInd < words.Length)
+            while (currLine.Length < lineWidth && wordsInd < words.Length)
             {
-                string currWord = words[wInd];
+                string currWord = words[wordsInd];
 
                 if (currLine.Length + currWord.Length <= lineWidth)
                 {
                     currLine.Append(currWord + ' ');
-                    wInd++;
+                    wordsInd++;
                 }
                 else break;
             }
