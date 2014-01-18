@@ -35,9 +35,13 @@ class TestArea
 
         for (int i = 0, cnt = 0; i < lines.Length; i++)
         {
-            if (lines[i] == " " || lines[i] == "") continue;
+            //lines[i].Trim();
+            
+            //if (lines[i] == " " || lines[i] == "") continue;
+            
+            lines[i] = Regex.Replace(lines[i], @"(^\s*)|(\s*$)", "");
 
-            lines[i].Trim();
+            if (lines[i] == " " || lines[i] == "") continue;
 
             if (lines[i][lines[i].Length - 1] == '}') cnt--;
 
