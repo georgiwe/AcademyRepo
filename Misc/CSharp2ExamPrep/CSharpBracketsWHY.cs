@@ -41,7 +41,7 @@ class TestArea
             
             lines[i] = Regex.Replace(lines[i], @"(^\s*)|(\s*$)", "");
 
-            if (lines[i] == " " || lines[i] == "") continue;
+            if (lines[i] == "") continue;
 
             if (lines[i][lines[i].Length - 1] == '}') cnt--;
 
