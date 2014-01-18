@@ -25,8 +25,8 @@ class TestArea
 
         for (int i = 0; i < lines.Length; i++)
         {
-            lines[i] = Regex.Replace(lines[i], @"\s*{\s*", "\n{\n");
-            lines[i] = Regex.Replace(lines[i], @"\s*}\s*", "\n}\n");
+            lines[i] = Regex.Replace(lines[i], @"{", "\n{\n");
+            lines[i] = Regex.Replace(lines[i], @"}", "\n}\n");
 
             inputText.AppendLine(lines[i]);
         }
