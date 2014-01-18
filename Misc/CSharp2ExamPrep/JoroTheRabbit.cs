@@ -1,27 +1,27 @@
 using System;
 
-class JoroTheRabbit
+class TestArea
 {
     static void Main()
     {   // start - 15:25, end - 16:15
         string[] preJumps = Console.ReadLine().Split(", ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-        var jumps = new int[preJumps.Length];
+        var terrain = new int[preJumps.Length];
 
-        for (int i = 0; i < jumps.Length; i++)
-            jumps[i] = int.Parse(preJumps[i]);
+        for (int i = 0; i < terrain.Length; i++)
+            terrain[i] = int.Parse(preJumps[i]);
 
-        int terLen = jumps.Length;
+        int terLen = terrain.Length;
         int maxJumps = 1;
 
-        for (int startPos = 0; startPos < jumps.Length; startPos++)
+        for (int startPos = 0; startPos < terrain.Length; startPos++)
         {
-            for (int stepSize = 1; stepSize <= jumps.Length; stepSize++)
+            for (int stepSize = 1; stepSize <= terrain.Length; stepSize++)
             {
                 int curJumps = 1;
 
                 for (int newPos = (startPos + stepSize) % terLen, oldPos = startPos; ; newPos = (oldPos + stepSize) % terLen)
                 {
-                    if (jumps[newPos] <= jumps[oldPos]) break;
+                    if (terrain[newPos] <= terrain[oldPos]) break;
 
                     curJumps++;
                     oldPos = newPos;
