@@ -20,7 +20,7 @@ class TestArea
         for (int i = 0; i < lines; i++)
         {
             text += Console.ReadLine();
-            //text = Regex.Replace(text, @"<del>.*</del>", "");
+            text = Regex.Replace(text, @"<del>.*</del>", "");
 
             bool rec = CheckForNestedTags(text);
             bool write = true;
@@ -86,7 +86,8 @@ class TestArea
 
         var val = new
         {
-            Op = text.ToString().Substring(stInd, endInd + 1 - stInd),
+            Op = text.ToString().
+                Substring(stInd, endInd + 1 - stInd),
             Start = stInd + offset,
             End = endInd + offset
         };
@@ -104,15 +105,9 @@ class TestArea
             case "<upper>": return Upper(text, stInd, endInd);
             case "<lower>": return Lower(text, stInd, endInd);
             case "<toggle>": return Toggle(text, stInd, endInd);
-            case "<del>":
 
             default: return "from choose op";
         }
-    }
-
-    static string Del(string text, int stInd, int endInd)
-    {
-        return "";
     }
 
     static string Rev(string text, int stInd, int endInd)
